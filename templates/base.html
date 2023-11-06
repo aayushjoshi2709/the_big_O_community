@@ -5,7 +5,10 @@
             {% block title %}
             {%endblock%}
         </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}"/>
+        {% block css_files %}
+        {% endblock %}
     </head>
     <body>
         <section class="wave-section">
@@ -34,4 +37,12 @@
         {% block content %}
         {% endblock %}
     </body>
+    <footer>
+        <section class="footer wave-section">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+            <div class="wave wave4"></div>
+        </section>
+    </footer>
 </html>

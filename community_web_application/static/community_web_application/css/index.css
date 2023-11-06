@@ -1,0 +1,216 @@
+.community-information{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    margin: 30px 0px;
+    height: 300px;
+}
+
+.community-information * {
+    z-index: inherit;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.community-information h2{
+    font-size: 42px;
+    text-align: center;
+}
+.community-information p{
+    font-size: 24px;
+    text-align: center;
+}
+.button-links{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    row-gap:10px;
+}
+.button-links a{
+    padding: 10px 16px;
+    font-size: 18px;
+    border-radius: 25px;
+    background-color: blue;
+    font-weight: bold;
+}
+
+.button-links a:visited{
+    color: white;
+}
+
+.community-description{
+    display: flex;
+    justify-content: center;
+    z-index: 2000;
+    margin: 10px 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.community-description *{
+    z-index: inherit;
+    text-align: center;
+}
+
+.community-description .content{
+    max-width: 50%;
+    margin-bottom: 10px;
+}
+@media only screen and (max-width: 900px) {
+    .community-description .content{
+        max-width: 100%;
+        width: 100%;
+        margin-top: 100px;
+    }
+}
+
+.community-description h2{
+    font-size: 42px;
+}
+.community-description h2 span{
+    color: #3586ff;
+}
+.community-description p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    margin: 10px;
+}
+
+.blog-posts{
+    width: 100%;
+    margin-top: 5rem;
+    display: flex;
+    gap:3rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.blog-posts h2{
+    text-align: center;
+    font-size: 42px;
+}
+.blog-posts-cards{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px;
+}
+.blog-card{
+    padding: 20px;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 350px;
+    border-radius: 10px;
+    justify-content: space-around;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.blog-card .blog-card-footer{
+    margin-top:20px;
+    border-radius: 8px;
+    background-color: orange;
+    padding: 4px 8px;
+    font-weight: bold;
+    color: white;
+    width: fit-content;
+}
+
+.blog-card h3{
+    font-size: 24px;
+}
+.blog-card p:nth-of-type(1){
+    color: gray;
+}
+
+.programs-posts{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.programs-posts h2{
+    font-size: 42px;
+    text-align: center;
+}
+.programs-posts p{
+    font-size: 24px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.programs-grid{
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr; 
+    width: 1000px;
+    gap: 20px;
+}
+@media only screen and (max-width: 1040px){
+    .programs-grid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: 80%;
+    }
+}
+
+.programs-grid-card{
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.programs-grid-card img{
+    width: 350px;
+    height: 300px;
+}
+.program-grid-card-content{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.program-grid-card-content h3{
+    font-size: 28px;
+}
+.program-grid-card-content p{
+    font-size: 18px;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 800px){
+    .programs-grid{
+        width: calc(100%-20px);
+        justify-content: center;
+        margin: 10px;
+    }
+    .programs-grid-card{
+        flex-wrap: wrap;
+    }
+    .programs-grid-card img{
+        width:100%;
+    }
+}
+@media only screen and (max-width: 880px){
+    .blog-card{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 1040px){
+    .gnu-love {
+        grid-column-start:2;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        flex-wrap: wrap;
+    }
+    .gnu-love img{
+        height: 400px;
+    }
+}

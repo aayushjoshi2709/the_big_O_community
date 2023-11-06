@@ -1,12 +1,78 @@
-{% extends 'base.html' %}
-{%block title%}
-    Main Page
-{% endblock%}
-{%block content%}
-    <main class="community-information">
-        <h2>Welcome To The Comunity</h2>
-        <p>
-            We use and share, opensource software. 
-        </p>
-    </main>
+{% extends 'base.html' %} {% load static %} {% block css_files %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'community_web_application/css/index.css' %}"
+/>
+{% endblock %} {%block title%} Main Page {% endblock%} {%block content%}
+<main class="community-information">
+  <h2>Welcome To The Comunity</h2>
+  <p>We use and share, opensource software.</p>
+  <div class="button-links">
+    <a>Programs</a>
+    <a>Blogs</a>
+    <a>Meet Our Teams</a>
+  </div>
+</main>
+<article class="community-description">
+  <div class="content">
+    <h2><span>Free Software</span> gives Freedom to one who uses it.</h2>
+    <p>
+      We are a group of students who likes to use Free software and want to
+      promote using such software to our community. We would love to see you
+      join our movement.
+    </p>
+  </div>
+  <div>
+    <img src="{% static 'community_web_application/images/logo.avif' %}" width="300" height="300"/>
+  </div>
+</article>
+<section class="blog-posts">
+    <h2>Blog Posts</h2>
+    <div class="blog-posts-cards">
+        {% include 'community_web_application/blog_card.html' %}
+        {% include 'community_web_application/blog_card.html' %}
+        {% include 'community_web_application/blog_card.html' %}
+        {% include 'community_web_application/blog_card.html' %}
+    </div>
+</section>
+<section class="programs-posts">
+    <h2>Programs</h2>
+    <p>Here are some of the program running under our Community</p>
+    <div class="programs-grid">
+        <div class="programs-grid-card">
+            <img src="{% static 'community_web_application/images/free.avif' %}"/>
+            <div class="program-grid-card-content">
+                <h3>Free your Phone</h3>
+                <p>Do you really own your phone? Learn how you can be safe and secure by using Free and Open Source Software on your phone.</p>
+            </div>
+        </div>
+        <div class="programs-grid-card">
+            <img src="{% static 'community_web_application/images/cats.avif' %}"/>
+            <div class="program-grid-card-content">
+                <h3>Connecting with Computers</h3>
+                <p>Sharing the knowledge of using Computers to people who needs the most.</p>
+            </div>
+        </div>
+        <div class="programs-grid-card gnu-love">
+            <img src="{% static 'community_web_application/images/gnu-love.avif' %}"/>
+            <div class="program-grid-card-content">
+                <h3>Liberate your Laptop</h3>
+                <p>Learn how to install GNU/Linux on your Laptop/PC and give Freedom to your devices.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="programs-posts">
+    <h2>Stats</h2>
+    <p>Number of devices altered under our Programs.</p>
+    <div class="stats-cards">
+        <div class="card">
+
+        </div>
+        <div class="card">
+            
+        </div>
+    </div>
+</section>
 {%endblock%}
