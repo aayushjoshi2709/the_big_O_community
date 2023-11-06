@@ -214,3 +214,27 @@
         height: 400px;
     }
 }
+
+.stats-cards{
+    display: flex;
+    flex:1;
+    margin-top: 2rem;
+    gap:30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.stats-cards .card{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 24px;
+    width: 300px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    justify-content: space-around;
+}
+.stats-cards .card p:last-child{
+    color: red;
+    font-size: 48px;
+    font-weight: bold;
+}
