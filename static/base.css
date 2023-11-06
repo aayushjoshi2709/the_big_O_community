@@ -119,3 +119,8 @@
         display: none;
     }
 }
+
+.header-links a, .header-links a:visited, .header-links a:focus{
+    color: white;
+    text-decoration: none;
+}
