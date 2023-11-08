@@ -1,126 +1,132 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 .wave-section {
-    position: absolute;
-    width: 100%;
-    height: 550px;
-    background-color: #3586ff;
-    overflow: hidden;
-    z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 550px;
+  background-color: #3586ff;
+  overflow: hidden;
+  z-index: 0;
 }
-.wave-section .wave{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: url("images/wave.png");
-    background-size: 1000px 100px;
+.wave-section .wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("images/wave.png");
+  background-size: 1000px 100px;
 }
 
-.footer{
-    margin-top: 3rem;
-    height: 300px;
+.footer {
+  margin-top: 3rem;
+  height: 300px;
 }
-.footer.wave-section .wave{
-    top: 0;
-    transform: rotate(180deg);
+.footer.wave-section .wave {
+  top: 0;
+  transform: rotate(180deg);
 }
-.wave-section .wave.wave1{
-    animation: animate 30s linear infinite;
-    z-index: 1000;
-    opacity: 1;
-    animation-delay: 0s;
-    bottom: 0;
+.wave-section .wave.wave1 {
+  animation: animate 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
 }
 
 @keyframes animate {
-    0%{
-        background-position-x: 0;
-    }
-    100%{
-        background-position-x: 1000px;
-    }
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
 }
 
-.wave-section .wave.wave2{
-    animation: animate2 15s linear infinite;
-    z-index: 999;
-    opacity: 0.5;
-    animation-delay: -5s;
-    bottom: 10px;
+.wave-section .wave.wave2 {
+  animation: animate2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
 }
 
 @keyframes animate2 {
-    0%{
-        background-position-x: 0;
-    }
-    100%{
-        background-position-x: -1000px;
-    }
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -1000px;
+  }
 }
 
-.wave-section .wave.wave3{
-    animation: animate 15s linear infinite;
-    z-index: 998;
-    opacity: 0.2;
-    animation-delay: -2s;
-    bottom: 15px;
+.wave-section .wave.wave3 {
+  animation: animate 15s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
 }
 
-.wave-section .wave.wave4{
-    animation: animate2 5s linear infinite;
-    z-index: 997;
-    opacity: 0.7;
-    animation-delay: -5s;
-    bottom: 10px;
+.wave-section .wave.wave4 {
+  animation: animate2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 10px;
 }
-.header-container{
-    width: 80%;
-    margin: 0px auto;
-    padding: 20px;
+.header-container {
+  width: 80%;
+  margin: 0px auto;
+  padding: 20px;
 }
-.header{
-    z-index: 2000;
-    display: flex;
-    width: 100%;
+.header {
+  z-index: 2000;
+  display: flex;
+  width: 100%;
 }
-.header .header-links-container{
-    flex: 1;
-    z-index: inherit;
-    font-family:Arial, Helvetica, sans-serif;
+.header .header-links-container {
+  flex: 1;
+  z-index: inherit;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.header .header-title{
-    flex:2;
-    z-index: inherit;
+.header .header-title {
+  flex: 1;
+  z-index: inherit;
 }
-.header-title{
-    padding: 0px;
-    display: flex;
-    align-content: center;
+.header-title {
+  padding: 0px;
+  display: flex;
+  align-content: center;
 }
-.header-title h1{ 
-    color: white;
-}
-
-.header-links{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: center;
-    font-size: 24px;
-    color: white;
-    list-style-type: none;
-}
-@media screen and (max-width:1200px) {
-    .header-links-container{
-        display: none;
-    }
+.header-title h1 {
+  color: white;
 }
 
-.header-links a, .header-links a:visited, .header-links a:focus{
-    color: white;
-    text-decoration: none;
+.header-links {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end;
+  gap: 30px;
+  align-content: center;
+  font-size: 24px;
+  color: white;
+  list-style-type: none;
+}
+@media screen and (max-width: 1024px) {
+  .header-links-container {
+    display: none;
+  }
+}
+
+.header-links a,
+.header-links a:visited,
+.header-links a:focus,
+.button-links a,
+.button-links a:visited,
+.button-links a:focus {
+  color: white;
+  text-decoration: none;
 }

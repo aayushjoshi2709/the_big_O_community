@@ -9,8 +9,8 @@
   <h2>Welcome To The Comunity</h2>
   <p>We use and share, opensource software.</p>
   <div class="button-links">
-    <a>Programs</a>
-    <a>Blogs</a>
+    <a href="{%url 'Index'%}#programs">Programs</a>
+    <a href="{%url 'All Blogs'%}">Blogs</a>
     <a>Meet Our Teams</a>
   </div>
 </main>
@@ -36,7 +36,7 @@
         {% include 'community_web_application/blog_card.html' %}
     </div>
 </section>
-<section class="programs-posts">
+<section id="programs" class="programs-posts">
     <h2>Programs</h2>
     <p>Here are some of the program running under our Community</p>
     <div class="programs-grid">

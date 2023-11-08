@@ -9,19 +9,21 @@
   type="text/css"
   href="{% static 'community_web_application/css/all_blogs.css' %}"
 />
-{% endblock %} {%block title%} All Blogs {% endblock%} {%block content%}
+{% endblock %} 
+{%block title%} All Blogs {% endblock%} 
+{%block content%}
 <section class="blog-posts">
-    <h2>All Blog Posts</h2>
-    <div class="blog-posts-cards">
-        {% include 'community_web_application/blog_card.html' %}
-        {% include 'community_web_application/blog_card.html' %}
-        {% include 'community_web_application/blog_card.html' %}
-        {% include 'community_web_application/blog_card.html' %}
-        {% include 'community_web_application/blog_card.html' %}
-        {% include 'community_web_application/blog_card.html' %}
-        {% include 'community_web_application/blog_card.html' %}
-        {% include 'community_web_application/blog_card.html' %}
-        {% include 'community_web_application/blog_card.html' %}
-    </div>
+  <h2>All Blog Posts</h2>
+  <div class="blog-posts-cards">
+    {% include 'community_web_application/blog_card.html' %} 
+    {% include 'community_web_application/blog_card.html' %} 
+    {% include 'community_web_application/blog_card.html' %} 
+    {% include 'community_web_application/blog_card.html' %} 
+    {% include 'community_web_application/blog_card.html' %} 
+    {% include 'community_web_application/blog_card.html' %} 
+    {% include 'community_web_application/blog_card.html' %} 
+    {% include 'community_web_application/blog_card.html' %} 
+    {% include 'community_web_application/blog_card.html' %}
+  </div>
 </section>
 {%endblock%}

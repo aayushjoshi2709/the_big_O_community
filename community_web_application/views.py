@@ -6,3 +6,6 @@ def index(request):
 
 def all_blogs(request):
     return render(request, "community_web_application/all_blogs.html",{})
+
+def contact_us(request):
+    return render(request, "contact_us.html")
