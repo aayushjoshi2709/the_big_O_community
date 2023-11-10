@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'community_web_application',
-    'mongoengine'
 ]
 
 MIDDLEWARE = [
@@ -79,14 +78,18 @@ WSGI_APPLICATION = 'the_big_O_community.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-#mongoengine.connect(db=env('DATABASE_NAME'), host=env('HOST_NAME'), username=env('USER_NAME'), password=env('PASSWORD'))
 DATABASES = {
     'default': {
-        'ENGINE': 'mongoengine',
-        'NAME':env('DATABASE_NAME')
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('USER_NAME'),
+        'PASSWORD': env('PASSWORD'),
+        'HOST': env('HOST_NAME'),
+        'PORT': '5432',
     }
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
