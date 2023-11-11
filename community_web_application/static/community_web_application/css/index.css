@@ -120,6 +120,10 @@
     width: fit-content;
     display: inline-block;
 }
+.blog-card-footer a:visited, .blog-card-footer a, .blog-card-footer:focus{
+    text-decoration: none;
+    color: white;
+}
 .blog-card h3{
     font-size: 24px;
 }

@@ -11,6 +11,13 @@
         width:80%;
     }
 }
+
+@media only screen and (max-width: 600px){
+    .blog-container{
+        width:90%;
+    }
+}
+
 .title-container{
     display: flex;
     flex-direction: column;
@@ -21,6 +28,7 @@
     margin-bottom: 1rem;
     color: white;
 }
+
 .title-container h1{
     font-size: 54px;
     margin-bottom: 20px;
@@ -34,6 +42,16 @@
 }
 .wave-section{
     height: 400px;
+}
+@media only screen and (max-width: 500px){
+    .wave-section{
+        height: 450px;
+    }
+}
+@media only screen and (max-width: 350px){
+    .wave-section{
+        height: 500px;
+    }
 }
 .footer{
     height: 70px;
@@ -80,4 +98,11 @@
     padding: 10px 0px;
     font-weight: bold;
     font-size: 24px;
+}
+.author-name a, .author-name a:visited, .author-name a:focus{
+    color: white;
+}
+.blog-tags a, .blog-tags:visited, .blog-tags:focus{
+    text-decoration: none;
+    color: black;
 }

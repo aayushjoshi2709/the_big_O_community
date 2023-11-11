@@ -8,9 +8,9 @@
         Read More...
     </a>
     <div >
-        {%for tags in blog.tags.all%}
+        {%for tag in blog.tags.all%}
         <span class="blog-card-footer">
-            <a>{{tags}}</a>
+            <a href="{% url 'All Blogs'%}?tag={{tag}}">{{tag}}</a>
         </span>
         {%endfor%}
     </div>

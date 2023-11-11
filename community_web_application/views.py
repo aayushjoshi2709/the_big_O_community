@@ -1,7 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from django.forms.models import model_to_dict
-from django.http import HttpResponse
-from .models import Blog,Author
+from .models import Blog
 import markdown
 # Create your views here.
 def index(request):
@@ -9,7 +7,14 @@ def index(request):
     return render(request, "community_web_application/index.html",{"blog_data":blog_data})
 
 def all_blogs(request):
+    author_param = request.GET.get('author',None)
+    tag_param = request.GET.get('tag', None)
     blog_data = Blog.objects.all()
+    if author_param:
+        blog_data = blog_data.filter(author=author_param)
+    if tag_param:
+        print(tag_param)
+        blog_data = blog_data.filter(tags__tag__in=[tag_param])
     return render(request, "community_web_application/all_blogs.html",{"blog_data":blog_data})
 
 def contact_us(request):
@@ -20,3 +25,4 @@ def view_blog(request,slug):
     blog_data = get_object_or_404(Blog, slug = slug)
     blog_data.content = markdown.markdown(blog_data.content)
     return render(request, "community_web_application/blog.html",{"blog_data":blog_data})
+

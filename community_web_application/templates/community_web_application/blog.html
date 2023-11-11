@@ -16,8 +16,8 @@
             <h1>
                 {{blog_data.title}}
             </h1>
-            <h2>
-                Author: {{blog_data.author.get_full_name}}
+            <h2 class="author-name">
+                Author: <a href="{% url 'All Blogs'%}?author={{blog_data.author.id}}">{{blog_data.author.get_full_name}}</a>
             </h2>
             <h2>
                 Date Created: {{blog_data.date_created.date}}
@@ -27,9 +27,9 @@
             </h2>
             <div class="tags-container">
                 <div class="tags">Tags:</div>
-                {%for tags in blog_data.tags.all%}
+                {%for tag in blog_data.tags.all%}
                 <div class="blog-tags">
-                    <a>{{tags}}</a>
+                    <a href="{% url 'All Blogs'%}?tag={{tag}}">{{tag}}</a>
                 </div>
                 {%endfor%}
             </div>
