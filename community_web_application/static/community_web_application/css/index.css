@@ -127,6 +127,13 @@
     color: gray;
 }
 
+.blog-card p:nth-of-type(2){
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 .programs-posts{
     margin-top: 5rem;
     display: flex;

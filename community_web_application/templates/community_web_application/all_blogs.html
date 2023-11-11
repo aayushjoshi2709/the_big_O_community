@@ -15,15 +15,9 @@
 <section class="blog-posts">
   <h2>All Blog Posts</h2>
   <div class="blog-posts-cards">
-    {% include 'community_web_application/blog_card.html' %} 
-    {% include 'community_web_application/blog_card.html' %} 
-    {% include 'community_web_application/blog_card.html' %} 
-    {% include 'community_web_application/blog_card.html' %} 
-    {% include 'community_web_application/blog_card.html' %} 
-    {% include 'community_web_application/blog_card.html' %} 
-    {% include 'community_web_application/blog_card.html' %} 
-    {% include 'community_web_application/blog_card.html' %} 
-    {% include 'community_web_application/blog_card.html' %}
+    {% for blog in blog_data %}
+      {% include 'community_web_application/blog_card.html' %}
+    {% endfor %} 
   </div>
 </section>
 {%endblock%}

@@ -20,12 +20,13 @@ class Tag(models.Model):
 # blog information table
 class Image(models.Model):
     url = models.URLField(max_length=500)
+    author=models.ForeignKey(Author, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.url)
 class Blog(models.Model):
     title = models.CharField(max_length=300)
     content = models.TextField(max_length=2500)
-    images = models.ForeignKey(Image, on_delete=models.CASCADE,null=True)
+    images = models.ManyToManyField(Image,null=True)
     estimated_time_to_read = models.IntegerField()
     tags = models.ManyToManyField(Tag)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
