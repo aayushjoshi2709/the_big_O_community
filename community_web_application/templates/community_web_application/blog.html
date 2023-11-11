@@ -1,0 +1,41 @@
+{%extends 'base.html' %}
+{% load static %}
+{% block css_files %}
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'community_web_application/css/blog.css' %}"
+    />
+{% endblock %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+    <section class="blog-container">
+        <section class="title-container">
+            <h1>
+                {{blog_data.title}}
+            </h1>
+            <h2>
+                Author: {{blog_data.author.get_full_name}}
+            </h2>
+            <h2>
+                Date Created: {{blog_data.date_created.date}}
+            </h2>
+            <h2>
+                Date Modified: {{blog_data.date_modified.date}}
+            </h2>
+            <div class="tags-container">
+                <div class="tags">Tags:</div>
+                {%for tags in blog_data.tags.all%}
+                <div class="blog-tags">
+                    <a>{{tags}}</a>
+                </div>
+                {%endfor%}
+            </div>
+        </section>
+        <section class="blog-content">
+            {{blog_data.content|safe}}
+        </section>
+    </section>
+{% endblock %}

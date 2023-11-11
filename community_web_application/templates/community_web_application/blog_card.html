@@ -2,9 +2,16 @@
     <div class="blog-card-body">
         <h3>{{blog.title}}</h3>
         <p>{{blog.estimated_time_to_read|truncatechars:100}} Minute Read</p>
-        <p>{{blog.content}}</p>
+        <p>{{blog.description}}</p>
     </div>
-    <div class="blog-card-footer">
-        <a>technology</a>
+    <a href="{%url 'blog_info' blog.slug%}">
+        Read More...
+    </a>
+    <div >
+        {%for tags in blog.tags.all%}
+        <span class="blog-card-footer">
+            <a>{{tags}}</a>
+        </span>
+        {%endfor%}
     </div>
 </div>
