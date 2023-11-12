@@ -11,13 +11,13 @@
 />
 {% endblock %} 
 {%block title%} All Blogs {% endblock%} 
-{%block content%}
-<section class="blog-posts">
+{%block inside_header %}
   <h2>All Blog Posts</h2>
+{%endblock%}
+{%block content%}
   <div class="blog-posts-cards">
     {% for blog in blog_data %}
       {% include 'community_web_application/blog_card.html' %}
     {% endfor %} 
   </div>
-</section>
 {%endblock%}

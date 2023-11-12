@@ -1,31 +1,25 @@
 .community-information{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    margin: 30px 0px;
-    height: 300px;
+    padding: 20px;
+    margin: 6rem 0px;
 }
 
 .community-information * {
-    z-index: inherit;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 .community-information h2{
     font-size: 42px;
-    text-align: center;
 }
 .community-information p{
     font-size: 24px;
-    text-align: center;
 }
 .button-links{
     margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
     column-gap: 20px;
     row-gap:10px;
@@ -45,14 +39,13 @@
 .community-description{
     display: flex;
     justify-content: center;
-    z-index: 2000;
     margin: 10px 20px;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding: 10px;
 }
 .community-description *{
-    z-index: inherit;
     text-align: center;
 }
 
@@ -60,7 +53,7 @@
     max-width: 50%;
     margin-bottom: 10px;
 }
-@media only screen and (max-width: 900px) {
+@media(max-width: 900px) {
     .community-description .content{
         max-width: 100%;
         width: 100%;
@@ -145,6 +138,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 .programs-posts h2{
     font-size: 42px;
@@ -163,13 +157,6 @@
     grid-template-rows: 1fr 1fr; 
     width: 1000px;
     gap: 20px;
-}
-@media only screen and (max-width: 1040px){
-    .programs-grid{
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        width: 80%;
-    }
 }
 
 .programs-grid-card{
@@ -197,7 +184,15 @@
     margin-top: 10px;
 }
 
-@media only screen and (max-width: 800px){
+@media(max-width: 1040px){
+    .programs-grid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: 80%;
+    }
+}
+
+@media(max-width: 800px){
     .programs-grid{
         width: calc(100%-20px);
         justify-content: center;
@@ -210,12 +205,12 @@
         width:100%;
     }
 }
-@media only screen and (max-width: 880px){
+@media(max-width: 880px){
     .blog-card{
         width: 100%;
     }
 }
-@media only screen and (min-width: 1040px){
+@media(min-width: 1040px){
     .gnu-love {
         grid-column-start:2;
         grid-row-start: 1;
@@ -244,6 +239,11 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     justify-content: space-around;
+}
+@media (max-width:400px) {
+    .stats-cards .card{
+        width: 250px;
+    }
 }
 .stats-cards .card p:last-child{
     color: red;

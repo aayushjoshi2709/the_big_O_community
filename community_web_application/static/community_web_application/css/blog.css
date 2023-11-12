@@ -6,27 +6,26 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 40px auto 10px auto;
 }
-@media only screen and (max-width: 1200px){
+@media(max-width: 1200px){
     .blog-container{
         width:80%;
     }
 }
 
-@media only screen and (max-width: 600px){
+@media(max-width: 600px){
     .blog-container{
         width:90%;
     }
 }
 
-.title-container{
+.title-container{   
     display: flex;
     flex-direction: column;
-    z-index: 2000;
-    justify-content: center;
     align-items: center;
-    height: 250px;
-    margin-bottom: 1rem;
+    justify-content: center;
+    margin:4rem 10px;
     color: white;
+    text-align: center;
 }
 
 .title-container h1{
@@ -36,37 +35,14 @@
 .title-container h2{
     margin-bottom: 10px;
     font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.blog-container *{
-    z-index: inherit;
-}
-.wave-section{
-    height: 400px;
-}
-@media only screen and (max-width: 500px){
-    .wave-section{
-        height: 450px;
-    }
-}
-@media only screen and (max-width: 350px){
-    .wave-section{
-        height: 500px;
-    }
-}
-.footer{
-    height: 70px;
-}
+
 .blog-content{
-    display: block;
-    margin-top: 5rem;
     padding: 10px;
     text-align: justify;
     min-height: calc(100vh - 470px);
 }
-.wave-section .wave{
-    display: none;
-}
-
 .blog-content *{
     margin: 10px;
 }
@@ -89,6 +65,7 @@
 }
 .tags-container{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     flex-direction: row;
@@ -105,4 +82,12 @@
 .blog-tags a, .blog-tags:visited, .blog-tags:focus{
     text-decoration: none;
     color: black;
+}
+blockquote{
+    background-color:  #B2BEB5;
+    padding: 4px;
+    color: white;
+}
+p{
+    font-size: 18px;
 }

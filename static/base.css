@@ -1,14 +1,21 @@
 * {
   margin: 0;
   padding: 0;
+  border: none;
+}
+.doc-info{
+  background-color: #3586ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .wave-section {
-  position: absolute;
-    width: 100%;
-  height: 550px;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: 120px;
   background-color: #3586ff;
   overflow: hidden;
-  z-index: 0;
 }
 .wave-section .wave {
   position: absolute;
@@ -78,14 +85,13 @@
   bottom: 10px;
 }
 .header-container {
-  width: 80%;
-  margin: 0px auto;
-  padding: 20px;
+  background-color: #3586ff;
 }
 .header {
-  z-index: 2000;
   display: flex;
-  width: 100%;
+  padding: 20px;
+  margin: 0px auto;
+  width: 80%;
 }
 .header .header-links-container {
   flex: 1;
@@ -131,3 +137,9 @@
   text-decoration: none;
 }
 
+@media (max-width:400px) {
+  .header-container{
+     font-size: 12px;
+     width: calc(100%-40px);
+  }
+}

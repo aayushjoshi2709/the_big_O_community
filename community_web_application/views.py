@@ -3,7 +3,7 @@ from .models import Blog
 import markdown
 # Create your views here.
 def index(request):
-    blog_data = Blog.objects.all()[:3]
+    blog_data = Blog.objects.all()[:4]
     return render(request, "community_web_application/index.html",{"blog_data":blog_data})
 
 def all_blogs(request):
@@ -13,7 +13,6 @@ def all_blogs(request):
     if author_param:
         blog_data = blog_data.filter(author=author_param)
     if tag_param:
-        print(tag_param)
         blog_data = blog_data.filter(tags__tag__in=[tag_param])
     return render(request, "community_web_application/all_blogs.html",{"blog_data":blog_data})
 
