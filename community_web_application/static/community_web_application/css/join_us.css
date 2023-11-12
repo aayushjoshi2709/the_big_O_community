@@ -1,0 +1,87 @@
+.desc{
+    margin: 4rem 0px;
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+}
+.desc h1{
+    font-size: 42px;
+}
+.desc p{
+    font-size: 24px;
+}
+.container{
+    flex: 1;
+    display: flex;
+    min-height: 40vh;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+.login-div, .sign-up-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    padding: 20px;
+    min-width: 300px;
+}
+.sign-up-div{
+    display: none;
+}
+form{
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+}
+input{
+    padding: 10px;
+    margin-bottom: 10px;
+    min-width: 200px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 18px
+}
+@media (max-width:1024px) {
+    .login-div, .sign-up-div{
+        min-width: 60%;
+    }
+}
+
+@media (max-width:768px) {
+    .login-div, .sign-up-div{
+        min-width: 80%;
+    }
+}
+@media (max-width:400px) {
+    .login-div, .sign-up-div{
+        min-width: calc(100% - 40px);
+    }
+}
+h2{
+    font-size: 48;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+label{
+    font-size: 24px;
+}
+.button-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+p{
+    margin-top: 10px;
+    text-align: center;
+}
+span{
+    display: inline;
+    color: green;
+    text-decoration: underline;
+    cursor: pointer;
+}

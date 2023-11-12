@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css_files %}
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'community_web_application/css/join_us.css' %}"
+    />
+{% endblock %}
+{% block title %}
+        JOIN US
+{% endblock %}
+{% block inside_header%}
+    <section class="desc">
+        <h1>
+            JOIN THE COMMUNITY
+        </h1>
+        <p>Exiting Community of Like Minded People</p>
+    </section>
+{% endblock%}
+{% block content %}
+    <main class="container">
+        <div class="login-div">
+            <h2>Login</h2>
+            <form>
+                {{login_form}}
+                <p>Don't have a login? <span onclick="toggle()">Register Now</span></p>
+                <div class="button-container">
+                    <input type="submit" value="Login">
+                    <input type="reset" value="Cancel">
+                </div>
+            </form>
+        </div>
+        <div class="sign-up-div">
+            <h2>Register</h2>
+            <form>
+                {{registration_form}}
+                <p>Already Registered? <span onclick="toggle()">Login Now</span></p>
+                <div class="button-container">
+                    <input type="submit" value="Sign Up">
+                    <input type="reset" value="Cancel">
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="{% static 'community_web_application/js/join_us.js'%}"></script>
+{% endblock %}

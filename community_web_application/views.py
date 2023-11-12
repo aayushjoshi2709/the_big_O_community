@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Blog
+from .forms import LoginForm, RegistrationFrom
 import markdown
 # Create your views here.
 def index(request):
@@ -25,3 +26,7 @@ def view_blog(request,slug):
     blog_data.content = markdown.markdown(blog_data.content)
     return render(request, "community_web_application/blog.html",{"blog_data":blog_data})
 
+def join_us(request):
+    registration_form = RegistrationFrom()
+    login_form = LoginForm()
+    return render(request,"community_web_application/join_us.html",{"login_form":login_form, "registration_form":registration_form})
