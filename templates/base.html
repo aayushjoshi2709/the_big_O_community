@@ -3,6 +3,7 @@
   <head>
     <title>The Big O Community - {% block title %} {%endblock%}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
     {% block css_files %} {% endblock %}
   </head>
@@ -11,6 +12,9 @@
       <div class="header">
         <div class="header-title">
           <h1>The Big O Community</h1>
+          <a class="menu-toggle" onclick="toggle_header_menu()">
+            <i class="fa fa-bars"  aria-hidden="true"></i>
+          </a>
         </div>
         <div class="header-links-container">
           <ul class="header-links">
@@ -39,5 +43,6 @@
         <div class="wave wave4"></div>
       </section>
     </footer>
+    <script src="{% static 'js/base.js' %}"></script>
   </body>
 </html>
