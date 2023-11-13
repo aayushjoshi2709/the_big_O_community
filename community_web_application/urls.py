@@ -5,5 +5,8 @@ urlpatterns = [
     path("blogs", views.all_blogs, name="All Blogs"),
     path("contact-us", views.contact_us,name="contact us"),
     path("blog/<slug:slug>", views.view_blog,name="blog_info"),
-    path("join-us", views.join_us, name="Join Us")
+    path("login", views.login, name="Login"),
+    path("user/login", views.login_page, name="Sign In"),
+    path("user/register", views.signup_page, name="Join Us"),
+    path("user",views.user_actions, name="User_Actions"),
 ]

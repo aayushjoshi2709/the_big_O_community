@@ -4,10 +4,9 @@ from datetime import datetime
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    phone_no = models.BigIntegerField()
+    email = models.EmailField(unique=True)
     access_type = models.CharField(max_length=20)
-    username = models.CharField(max_length=100)
+    username = models.CharField(max_length=100, unique=True,db_index=True)
     password = models.CharField(max_length=100)
     def __str__(self):
         return self.get_full_name()
@@ -20,12 +19,14 @@ class Tag(models.Model):
     def __str__(self):
         return str(self.tag)
 
-# blog information table
+# images information table
 class Image(models.Model):
     url = models.URLField(max_length=500)
     author=models.ForeignKey(Author, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.url)
+    
+# blog information table
 class Blog(models.Model):
     title = models.CharField(max_length=300)
     description = models.CharField(max_length=300, null=True)
@@ -34,7 +35,7 @@ class Blog(models.Model):
     estimated_time_to_read = models.IntegerField()
     tags = models.ManyToManyField(Tag)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    slug = models.SlugField(db_index=True)
+    slug = models.SlugField(db_index=True,unique=True)
     date_created = models.DateTimeField(auto_now_add=True, blank=True)
     date_modified = models.DateTimeField(auto_now=True, blank=True)
     def __str__(self):

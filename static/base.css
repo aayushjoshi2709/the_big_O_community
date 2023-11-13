@@ -108,7 +108,9 @@
 .header-title h1 {
   color: white;
 }
-
+.header-links-container{
+  display: block;
+}
 .header-links {
   display: flex;
   flex-direction: row;
@@ -125,7 +127,17 @@
   font-size: 36px;
   color: white;
 }
-@media screen and (max-width: 1150px) {
+.header-links a,
+.header-links a:visited,
+.header-links a:focus,
+.button-links a,
+.button-links a:visited,
+.button-links a:focus {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 1150px) {
   .header{
     flex-direction: column;
     padding: 0px;
@@ -139,7 +151,7 @@
   .header-links{
     flex-direction: column;
     width: 100%;
-    gap:0px;  
+    gap:0px; 
   }
   h1{
     padding: 20px;
@@ -154,13 +166,4 @@
   .menu-toggle{
     display: block;
   }
-}
-.header-links a,
-.header-links a:visited,
-.header-links a:focus,
-.button-links a,
-.button-links a:visited,
-.button-links a:focus {
-  color: white;
-  text-decoration: none;
 }

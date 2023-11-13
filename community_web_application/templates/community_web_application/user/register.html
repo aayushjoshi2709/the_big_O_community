@@ -4,7 +4,7 @@
     <link
     rel="stylesheet"
     type="text/css"
-    href="{% static 'community_web_application/css/join_us.css' %}"
+    href="{% static 'community_web_application/css/login_and_signup.css' %}"
     />
 {% endblock %}
 {% block title %}
@@ -20,22 +20,11 @@
 {% endblock%}
 {% block content %}
     <main class="container">
-        <div class="login-div">
-            <h2>Login</h2>
-            <form>
-                {{login_form}}
-                <p>Don't have a login? <span onclick="toggle()">Register Now</span></p>
-                <div class="button-container">
-                    <input type="submit" value="Login">
-                    <input type="reset" value="Cancel">
-                </div>
-            </form>
-        </div>
         <div class="sign-up-div">
             <h2>Register</h2>
-            <form>
+            <form method="POST" action="/user">
                 {{registration_form}}
-                <p>Already Registered? <span onclick="toggle()">Login Now</span></p>
+                <p>Already Registered? <a href="{% url 'Sign In'%}">Login Now</a></p>
                 <div class="button-container">
                     <input type="submit" value="Sign Up">
                     <input type="reset" value="Cancel">
@@ -43,5 +32,4 @@
             </form>
         </div>
     </main>
-    <script src="{% static 'community_web_application/js/join_us.js'%}"></script>
 {% endblock %}

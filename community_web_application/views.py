@@ -26,7 +26,16 @@ def view_blog(request,slug):
     blog_data.content = markdown.markdown(blog_data.content)
     return render(request, "community_web_application/blog.html",{"blog_data":blog_data})
 
-def join_us(request):
-    registration_form = RegistrationFrom()
+def login_page(request):
     login_form = LoginForm()
-    return render(request,"community_web_application/join_us.html",{"login_form":login_form, "registration_form":registration_form})
+    return render(request,"community_web_application/user/login.html",{"login_form":login_form})
+
+def signup_page(request):
+    registration_form = RegistrationFrom()
+    return render(request,"community_web_application/user/register.html",{"registration_form":registration_form})
+
+def login(request):
+    pass
+
+def user_actions(request):
+    pass
