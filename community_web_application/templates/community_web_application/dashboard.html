@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% load static %} {% block css_files %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{%static 'community_web_application/css/dashboard.css'%}"
+/>
+{%block dashboard_elements_css%}
+{%endblock%}
+{% endblock %} {% block title %} Dashboard {% endblock %} {% block content %}
+<div class="container">
+  <aside class="sidebar">
+    <ul>
+      <li>
+        <div>
+          <span class="sidebar-headings"> Your Articles </span>
+          <i class="fa-regular fa-newspaper"></i>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="sidebar-headings"> Add Article </span>
+          <i class="fa-regular fa-square-plus"></i>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="sidebar-headings"> Review Article </span>
+          <i class="fa-solid fa-glasses"></i>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="sidebar-headings"> User Info </span>
+          <i class="fa-regular fa-user"></i>
+        </div>
+      </li>
+    </ul>
+  </aside>
+  <main class="display">
+    {%block dashboard_display%}
+    {%endblock%}
+  </main>
+</div>
+{% endblock %}

@@ -30,8 +30,9 @@
 .footer {
   margin-top: 3rem;
   height: 300px;
+  background-color: #3586ff;
 }
-.footer.wave-section .wave {
+.footer .wave-section .wave {
   top: 0;
   transform: rotate(180deg);
 }
