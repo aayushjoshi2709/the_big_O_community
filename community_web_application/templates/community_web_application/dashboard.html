@@ -11,34 +11,44 @@
   <aside class="sidebar">
     <ul>
       <li>
-        <div>
-          <span class="sidebar-headings"> Your Articles </span>
-          <i class="fa-regular fa-newspaper"></i>
-        </div>
+        <a class="sidebar-links">
+          <div>
+            <span class="sidebar-headings"> Your Articles </span>
+            <i class="fa-regular fa-newspaper"></i>
+          </div>
+        </a>
       </li>
       <li>
-        <div>
-          <span class="sidebar-headings"> Add Article </span>
-          <i class="fa-regular fa-square-plus"></i>
-        </div>
+        <a class="sidebar-links">
+          <div>
+            <span class="sidebar-headings"> Add Article </span>
+            <i class="fa-regular fa-square-plus"></i>
+          </div>
+        </a>
       </li>
       <li>
-        <div>
-          <span class="sidebar-headings"> Review Article </span>
-          <i class="fa-solid fa-glasses"></i>
-        </div>
+        <a class="sidebar-links">
+          <div>
+            <span class="sidebar-headings"> Review Article </span>
+            <i class="fa-solid fa-glasses"></i>
+          </div>
+        </a>
       </li>
       <li>
-        <div>
-          <span class="sidebar-headings"> User Info </span>
-          <i class="fa-regular fa-user"></i>
-        </div>
+        <a class="sidebar-links">
+          <div>
+            <span class="sidebar-headings"> User Info </span>
+            <i class="fa-regular fa-user"></i>
+          </div>
+        </a>
       </li>
       <li>
-        <div>
-          <span class="sidebar-headings"> Logout </span>
-          <i class="fa fa-sign-out" aria-hidden="true"></i>
-        </div>
+        <a class="sidebar-links" href="{% url 'logout'%}">
+          <div>
+            <span class="sidebar-headings"> Logout </span>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+          </div>
+        </a>
       </li>
     </ul>
   </aside>

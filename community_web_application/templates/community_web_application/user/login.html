@@ -8,7 +8,7 @@
     />
 {% endblock %}
 {% block title %}
-        JOIN US
+        Welcome Back
 {% endblock %}
 {% block inside_header%}
     <section class="desc">
@@ -22,9 +22,21 @@
     <main class="container">
         <div class="login-div">
             <h2>Login</h2>
-            <form method="POST" action="/user/login">
+            {%if messages %}
+                {% for msg in messages %}
+                    <p class="message
+                        {%if message.level  == 40 %}
+                            {{success}}
+                        {% else %}
+                            {{error}}
+                        {% endif %}
+                    ">{{msg.message}}</p>
+                {% endfor %}
+            {%endif%}
+            <form method="POST" action="{% url 'sign_in' %}">
+                {%csrf_token%}
                 {{login_form}}
-                <p>Don't have a login? <a href="{% url 'Join Us'%}">Register Now</a></p>
+                <p>Don't have a login? <a href="{% url 'join_us'%}">Register Now</a></p>
                 <div class="button-container">
                     <input type="submit" value="Login">
                     <input type="reset" value="Cancel">

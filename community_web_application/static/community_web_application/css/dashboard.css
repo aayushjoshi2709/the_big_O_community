@@ -33,10 +33,14 @@ body{
     font-weight: bold;
     border-bottom: 1px solid white;
 }
-.sidebar li div{
+.sidebar-links div{ 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.sidebar-links,.sidebar-links:active, .sidebar-links:focus, .sidebar-links:visited{
+    color: white;
+    text-decoration: none;
 }
 @media (max-width:1340px) {
     .sidebar li div {
@@ -49,7 +53,7 @@ body{
         margin-top: 10px;
         text-align: center;
     }
-    .sidebar li div{
+    .sidebar-links div{
         justify-content: center;
     }
 }

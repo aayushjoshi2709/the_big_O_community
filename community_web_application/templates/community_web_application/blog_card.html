@@ -10,7 +10,7 @@
     <div >
         {%for tag in blog.tags.all%}
         <span class="blog-card-footer">
-            <a href="{% url 'All Blogs'%}?tag={{tag}}">{{tag}}</a>
+            <a href="{% url 'all_blogs'%}?tag={{tag}}">{{tag}}</a>
         </span>
         {%endfor%}
     </div>

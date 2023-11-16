@@ -135,6 +135,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS=[
-    'community_web_application.MultiModelBackend',
+    'community_web_application.MultiModelBackend.MultiModelBackend',
     'django.contrib.auth.backends.ModelBackend'
 ]
+

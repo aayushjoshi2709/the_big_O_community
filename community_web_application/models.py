@@ -6,15 +6,17 @@ class Author(AbstractUser):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
+    username = models.CharField(max_length=50,unique=True, db_index=True)
+    password = models.CharField(max_length=200)
     access_type = models.CharField(max_length=20)
-    username = models.CharField(max_length=100, unique=True,db_index=True)
-    password = models.CharField(max_length=100)
     groups = models.ManyToManyField(to='auth.Group', related_name='author_groups')
     user_permissions = models.ManyToManyField(to='auth.Permission', related_name='author_user_permissions')
     def __str__(self):
         return self.get_full_name()
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
+    class Meta:
+        db_table = "author"
 
 # tags information table
 class Tag(models.Model):
