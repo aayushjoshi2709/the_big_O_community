@@ -35,7 +35,7 @@ def signup_page(request):
     return render(request,"community_web_application/user/register.html",{"registration_form":registration_form})
 
 def show_dashboard(request):
-    return render(request, "community_web_application/dashboard.html")
+    return render(request, "community_web_application/dashboard/home.html")
 
 def user_actions(request):
     pass

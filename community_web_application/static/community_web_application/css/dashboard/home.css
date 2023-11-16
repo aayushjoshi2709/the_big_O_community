@@ -1,0 +1,9 @@
+h2{
+    font-size: 48px;
+    text-align: center;
+    margin: 10px;
+    color: gray;
+}
+.message{
+    font-weight: normal;
+}

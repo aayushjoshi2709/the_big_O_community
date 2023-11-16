@@ -1,13 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from datetime import datetime
 # author information table
-class Author(models.Model):
+class Author(AbstractUser):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     access_type = models.CharField(max_length=20)
     username = models.CharField(max_length=100, unique=True,db_index=True)
     password = models.CharField(max_length=100)
+    groups = models.ManyToManyField(to='auth.Group', related_name='author_groups')
+    user_permissions = models.ManyToManyField(to='auth.Permission', related_name='author_user_permissions')
     def __str__(self):
         return self.get_full_name()
     def get_full_name(self):
