@@ -38,7 +38,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
 }
-@media (max-width:1310px) {
+@media (max-width:1340px) {
     .sidebar li div {
         flex-direction: column-reverse;
         justify-content: center;
