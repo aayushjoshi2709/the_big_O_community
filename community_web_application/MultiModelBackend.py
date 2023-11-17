@@ -10,3 +10,10 @@ class MultiModelBackend(ModelBackend):
         if author is not None and author.check_password(password):
             return author
         return None
+    def get_user(self, user_id):
+        user = User.objects.filter(pk=user_id).first()
+        if user is not None:
+            return user
+        author = Author.objects.get(pk=user_id)
+        if author is not None:
+            return author

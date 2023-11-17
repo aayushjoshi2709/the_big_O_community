@@ -11,7 +11,7 @@
   <aside class="sidebar">
     <ul>
       <li>
-        <a class="sidebar-links">
+        <a class="sidebar-links" href="{% url 'dashboard_your_article'%}">
           <div>
             <span class="sidebar-headings"> Your Articles </span>
             <i class="fa-regular fa-newspaper"></i>
@@ -19,7 +19,7 @@
         </a>
       </li>
       <li>
-        <a class="sidebar-links">
+        <a class="sidebar-links" href="{% url 'dashboard_add_article'%}">
           <div>
             <span class="sidebar-headings"> Add Article </span>
             <i class="fa-regular fa-square-plus"></i>
@@ -27,7 +27,7 @@
         </a>
       </li>
       <li>
-        <a class="sidebar-links">
+        <a class="sidebar-links" href="{% url 'dashboard_review_article'%}">
           <div>
             <span class="sidebar-headings"> Review Article </span>
             <i class="fa-solid fa-glasses"></i>
@@ -35,9 +35,17 @@
         </a>
       </li>
       <li>
-        <a class="sidebar-links">
+        <a class="sidebar-links" href="{% url 'dashboard_user_info'%}">
           <div>
             <span class="sidebar-headings"> User Info </span>
+            <i class="fa-regular fa-user"></i>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="sidebar-links" href="{% url 'dashboard_change_password'%}">
+          <div>
+            <span class="sidebar-headings"> Change Password </span>
             <i class="fa-regular fa-user"></i>
           </div>
         </a>

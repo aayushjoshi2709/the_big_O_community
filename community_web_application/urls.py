@@ -9,6 +9,10 @@ urlpatterns = [
     path("user/register", views.signup_page_view, name="join_us"),
     path("user/logout", views.logout_view, name="logout"),
     path("user",views.user_actions_view, name="user_actions"),
-    path("dashboard", views.show_dashboard_view, name="dashboad_index")
-
+    path("dashboard", views.dashboard_home_view, name="dashboad_index"),
+    path("dashboard/change-password", views.dashboard_change_password_view, name="dashboard_change_password"),
+    path("dashboard/user-info", views.dashboard_user_info_view, name="dashboard_user_info"),
+    path("dashboard/your-article", views.dashboard_your_article_view, name="dashboard_your_article"),
+    path("dashboard/review-article", views.dashboard_review_article_view, name="dashboard_review_article"),
+    path("dashboard/add-article", views.dashboard_add_article_view, name="dashboard_add_article")
 ]

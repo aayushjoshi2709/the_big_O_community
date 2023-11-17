@@ -1,0 +1,38 @@
+h2{
+    font-size: 48px;
+    text-align: center;
+    margin: 10px 0px;
+}
+.message{
+    font-weight: normal;
+}
+
+.form-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    padding: 20px;
+    min-width: 200px;
+}
+form{
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+}
+input{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 18px
+}
+
+@media (max-width:370px) {
+    .form-div{
+        padding: 0px;
+    }
+    input{
+        padding: 6px;
+    }
+}

@@ -1,5 +1,5 @@
-from django.forms import Form,PasswordInput,EmailField,CharField,ValidationError
-from django.contrib.auth.forms import UserCreationForm
+from django.forms import Form,PasswordInput,EmailField,CharField,ValidationError, ModelForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from .models import Author
 class LoginForm(Form):
     username = CharField(label='username',max_length=100)
@@ -18,3 +18,12 @@ class RegistrationFrom(UserCreationForm):
     class Meta:
         model=Author
         fields = ['first_name', 'last_name' ,'username','email','password1','password2']
+
+class RegistrationUpdationForm(ModelForm):
+    class Meta:
+        model=Author
+        fields = ['first_name', 'last_name' ,'username','email']
+
+class UpdatePasswordForm(PasswordChangeForm):
+    class Meta:
+        model=Author

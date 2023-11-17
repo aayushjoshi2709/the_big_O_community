@@ -2,8 +2,8 @@ from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Blog, Author
-from .forms import LoginForm, RegistrationFrom
-from django.contrib.auth import authenticate, login, logout
+from .forms import LoginForm, RegistrationFrom, RegistrationUpdationForm, UpdatePasswordForm
+from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
 from django.contrib import messages
 import markdown
 # Create your views here.
@@ -51,13 +51,82 @@ def signup_page_view(request):
     registration_form = RegistrationFrom()
     return render(request,"community_web_application/user/register.html",{"registration_form":registration_form, "messages":stored_messages})
 
-def show_dashboard_view(request):
-    return render(request, "community_web_application/dashboard/home.html")
+def dashboard_home_view(request):
+    if request.user.is_authenticated:
+        return render(request, "community_web_application/dashboard/home.html")
+    else:
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
 
+def dashboard_user_info_view(request):
+    stored_messages = messages.get_messages(request)
+    if request.user.is_authenticated:
+        if request.method =="GET":
+            registration_updation_form = RegistrationUpdationForm(initial={
+                "first_name":request.user.first_name,
+                "last_name":request.user.last_name,
+                "username":request.user.username,
+                "email":request.user.email
+            })
+            return render(request, "community_web_application/dashboard/user_info.html", {"form":registration_updation_form, "messages":stored_messages})
+        elif request.method == "POST":
+            registration_updation_form = RegistrationUpdationForm(request.POST, instance=request.user)
+            if registration_updation_form.is_valid():
+                registration_updation_form.save()
+                messages.success(request, 'Author information updated successfully.')
+            else:
+                for field, errors in registration_updation_form.errors.items():
+                    for error in errors:
+                        messages.add_message(request, messages.ERROR, error)
+            return HttpResponseRedirect(reverse('dashboard_user_info'))   
+    else:
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
+
+def dashboard_review_article_view(request):
+    if request.user.is_authenticated:
+        return render(request, "community_web_application/dashboard/review_article.html")
+    else:
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
+    
+def dashboard_your_article_view(request):
+    if request.user.is_authenticated:
+        return render(request, "community_web_application/dashboard/your_article.html")
+    else:
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
+    
+def dashboard_add_article_view(request):
+    if request.user.is_authenticated:
+        return render(request, "community_web_application/dashboard/add_article.html")
+    else:
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
+    
+def dashboard_change_password_view(request):
+    if request.user.is_authenticated:
+        if request.method == "GET":
+            update_password_form = UpdatePasswordForm(user=request.user)
+            return render(request, "community_web_application/dashboard/change_password.html", {"form":update_password_form})
+        elif request.method == "POST":
+            update_password_form = UpdatePasswordForm(request.user, request.POST)
+            if update_password_form.is_valid():
+                user = update_password_form.save()
+                update_session_auth_hash(request, user)
+                messages.add_message(request, messages.SUCCESS, "Password updated successfully..")
+            else:
+                for field, errors in update_password_form.errors.items():
+                    for error in errors:
+                        messages.add_message(request, messages.ERROR, error)
+        return HttpResponseRedirect(reverse('dashboard_change_password'))
+    else:
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
+    
 def user_actions_view(request):
     if request.method == "POST":
         registration_form = RegistrationFrom(request.POST)
-        print(registration_form.is_valid())
         if registration_form.is_valid():
             registration_form.save()
             username = registration_form.cleaned_data.get('username')
@@ -70,6 +139,8 @@ def user_actions_view(request):
                 for error in errors:
                     messages.add_message(request, messages.ERROR, error)
             return HttpResponseRedirect(reverse('join_us'))
+    
+
 
 def logout_view(request):
     logout(request)
