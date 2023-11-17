@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from datetime import datetime
+from django.utils.text import slugify
+from ckeditor.fields import RichTextField
+
 # author information table
 class Author(AbstractUser):
     first_name = models.CharField(max_length=50)
@@ -26,17 +28,16 @@ class Tag(models.Model):
 
 # images information table
 class Image(models.Model):
-    url = models.URLField(max_length=500)
+    image = models.ImageField(upload_to='images/')
     author=models.ForeignKey(Author, on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.url)
+        return str(self.image)
     
 # blog information table
 class Blog(models.Model):
     title = models.CharField(max_length=300)
     description = models.CharField(max_length=300, null=True)
-    content = models.TextField(max_length=2500)
-    images = models.ManyToManyField(Image)
+    content = RichTextField(max_length=10000)
     estimated_time_to_read = models.IntegerField()
     tags = models.ManyToManyField(Tag)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -46,4 +47,7 @@ class Blog(models.Model):
     def __str__(self):
         return str(self.title)
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Blog, self).save(*args, **kwargs)
 

@@ -1,0 +1,23 @@
+{%extends 'community_web_application/dashboard.html'%}
+{%load static%}
+{% block dashboard_elements_css %}
+    <link rel="stylesheet" type="text/css" href="{%static 'community_web_application/css/dashboard/user_info.css'%}"/>
+{% endblock %}
+{% block dashboard_display %}
+    <h2>Add Blog</h2>
+    {%if messages %}
+        {% for msg in messages %}
+            <p>{{msg}}</p>
+        {% endfor %}
+    {%endif%}
+    <div class="form-div">
+        <form method="post" action="{%url 'dashboard_save_blog' %}">
+            {%csrf_token%}
+            {{form.media}}
+            {{form.as_p}}
+            <input value="Add Blog" type="submit"/>
+        </form>
+    </div>
+    <script src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{%endblock%}

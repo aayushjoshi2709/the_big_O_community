@@ -1,6 +1,7 @@
-from django.forms import Form,PasswordInput,EmailField,CharField,ValidationError, ModelForm
+from django.forms import Form,PasswordInput,CharField,ValidationError, ModelForm
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
-from .models import Author
+from .models import Author,Blog,Image
+from django import forms
 class LoginForm(Form):
     username = CharField(label='username',max_length=100)
     password = CharField(label='password',widget=PasswordInput)
@@ -27,3 +28,10 @@ class RegistrationUpdationForm(ModelForm):
 class UpdatePasswordForm(PasswordChangeForm):
     class Meta:
         model=Author
+
+class AddBlogForm(forms.ModelForm):
+
+    class Meta:
+        model=Blog
+        fields= ['title','description','estimated_time_to_read','content','tags']
+        

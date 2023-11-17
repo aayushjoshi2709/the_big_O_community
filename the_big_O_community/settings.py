@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'community_web_application'
+    'community_web_application',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -139,3 +141,25 @@ AUTHENTICATION_BACKENDS=[
     'django.contrib.auth.backends.ModelBackend'
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%',
+        'height':'100px',
+        'toolbar': 'Custom',
+        'toolbar_Custom':[
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+            ['NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['RemoveFormat', 'TextColor', 'BGColor'],
+            ['Link', 'Unlink', 'Anchor', 'Image', 'Table'],
+            ['Format','Font', 'FontSize','Maximize', 'ShowBlocks','Source'],
+        ],
+        'filebrowserImageUploadUrl': '../dashboard/image-upload',
+    },
+}

@@ -20,19 +20,37 @@ form{
     flex-direction: column;
     justify-content: center;
 }
-input{
+input,select,button{
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid grey;
     border-radius: 10px;
     font-size: 18px
 }
+select{
+    height: 100px;
+    overflow-y: scroll;
+}
 
+button{
+    font-size: 12px;
+}
+.hidden{
+    border: none;
+    color:transparent;
+    padding: 2px;
+    margin: 0;
+    border-radius: none;
+}
+p{
+    display: flex;
+    flex-direction: column;
+}
 @media (max-width:370px) {
     .form-div{
         padding: 0px;
     }
-    input{
+    input,textarea{
         padding: 6px;
     }
 }

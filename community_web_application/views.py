@@ -1,11 +1,15 @@
 from django.shortcuts import render,get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+from django.http import HttpResponseRedirect,HttpResponseBadRequest
 from django.urls import reverse
-from .models import Blog, Author
-from .forms import LoginForm, RegistrationFrom, RegistrationUpdationForm, UpdatePasswordForm
+from django.views.decorators.csrf import csrf_exempt
+from .models import Blog, Image,Author
+from .forms import LoginForm, RegistrationFrom, RegistrationUpdationForm, UpdatePasswordForm,AddBlogForm
 from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
 from django.contrib import messages
-import markdown
+from django.conf import settings
+from django.core.files import File
+
 # Create your views here.
 def index_view(request):
     blog_data = Blog.objects.all()[:4]
@@ -27,7 +31,7 @@ def contact_us_view(request):
 def view_blog_view(request,slug):
     # blog_data = Blog.objects.filter(slug=slug))
     blog_data = get_object_or_404(Blog, slug = slug)
-    blog_data.content = markdown.markdown(blog_data.content)
+    blog_data.content = blog_data.content
     return render(request, "community_web_application/blog.html",{"blog_data":blog_data})
 
 def login_view(request):
@@ -41,7 +45,7 @@ def login_view(request):
         author = authenticate(request, username=username, password=password)
         if author is not None:
             login(request, author)
-            return HttpResponseRedirect(reverse('dashboad_index'))
+            return HttpResponseRedirect(reverse('dashboard_index'))
         else:
             messages.add_message(request,messages.ERROR, "Username or password not correct")
             return HttpResponseRedirect(reverse("sign_in"))
@@ -83,23 +87,26 @@ def dashboard_user_info_view(request):
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
 
-def dashboard_review_article_view(request):
+def dashboard_review_blog_view(request):
     if request.user.is_authenticated:
-        return render(request, "community_web_application/dashboard/review_article.html")
+        return render(request, "community_web_application/dashboard/review_blog.html")
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
     
-def dashboard_your_article_view(request):
+def dashboard_your_blog_view(request):
     if request.user.is_authenticated:
-        return render(request, "community_web_application/dashboard/your_article.html")
+        return render(request, "community_web_application/dashboard/your_blog.html")
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
     
-def dashboard_add_article_view(request):
+def dashboard_add_blog_view(request):
+    stored_messages = messages.get_messages(request)
     if request.user.is_authenticated:
-        return render(request, "community_web_application/dashboard/add_article.html")
+        if request.method == "GET":
+            add_blog = AddBlogForm()
+            return render(request, "community_web_application/dashboard/add_blog.html",{"form":add_blog, "messages":stored_messages})
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
@@ -123,7 +130,26 @@ def dashboard_change_password_view(request):
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
-    
+
+def blog_action_view(request):
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            add_blog_form = AddBlogForm(request.POST)
+            if add_blog_form.is_valid():
+                blog = add_blog_form.save(commit=False)
+                blog.author = Author.objects.get(pk=request.user.id)
+                blog.save()
+                messages.add_message(request, messages.SUCCESS, 'Blog added successfully')
+                return HttpResponseRedirect(reverse('dashboard_add_blog'))
+            else:
+                for field, errors in add_blog_form.errors.items():
+                    for error in errors:
+                        messages.add_message(request, messages.ERROR, error)
+                return HttpResponseRedirect(reverse('dashboard_add_blog'))
+        else:
+            messages.add_message(request,messages.ERROR, "Please sign in first")
+            return HttpResponseRedirect(reverse("dashboard_add_blog"))
+
 def user_actions_view(request):
     if request.method == "POST":
         registration_form = RegistrationFrom(request.POST)
@@ -133,14 +159,31 @@ def user_actions_view(request):
             raw_password = registration_form.cleaned_data.get('password1')
             author = authenticate(username=username, password=raw_password)
             login(request,author)
-            return HttpResponseRedirect(reverse('dashboad_index'))
+            return HttpResponseRedirect(reverse('dashboard_index'))
         else:
             for field, errors in registration_form.errors.items():
                 for error in errors:
                     messages.add_message(request, messages.ERROR, error)
             return HttpResponseRedirect(reverse('join_us'))
-    
 
+
+@csrf_exempt
+def upload_image_view(request):
+    if request.user.is_authenticated:
+        image = Image()
+        image_file = request.FILES['upload']
+        image.author = Author.objects.get(pk=request.user.id)
+        image.image.save(image_file.name, File(image_file))
+        image.save()
+        url = request.build_absolute_uri(image.image.url)
+        print(url)
+        return JsonResponse({
+            "uploaded": 1,
+            "fileName": image.image.name,
+            'url': url
+        })
+    else:
+        return HttpResponseBadRequest()
 
 def logout_view(request):
     logout(request)
