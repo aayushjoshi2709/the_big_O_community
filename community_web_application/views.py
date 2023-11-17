@@ -139,6 +139,7 @@ def blog_action_view(request):
                 blog = add_blog_form.save(commit=False)
                 blog.author = Author.objects.get(pk=request.user.id)
                 blog.save()
+                add_blog_form.save_m2m()
                 messages.add_message(request, messages.SUCCESS, 'Blog added successfully')
                 return HttpResponseRedirect(reverse('dashboard_add_blog'))
             else:
