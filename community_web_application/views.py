@@ -118,10 +118,10 @@ def dashboard_review_blog_view(request):
 
 @require_http_methods(["GET"])
 def dashboard_your_blog_view(request):
-    stored_messages = messages.get_messages(request)
     if request.user.is_authenticated:
+        stored_messages = messages.get_messages(request)
         blogs = Blog.objects.filter(author=request.user)
-        return render(request, "community_web_application/dashboard/your_blogs.html", {"blogs":blogs},{"messages":stored_messages})
+        return render(request, "community_web_application/dashboard/your_blogs.html", {"blogs":blogs,"messages":stored_messages})
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
