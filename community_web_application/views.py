@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout,update_session_auth_
 from django.contrib import messages
 from django.views.decorators.http import require_http_methods
 from django.core.files import File
-
+import json
 # Create your views here.s
 @require_http_methods(["GET"])
 def index_view(request):
@@ -118,9 +118,10 @@ def dashboard_review_blog_view(request):
 
 @require_http_methods(["GET"])
 def dashboard_your_blog_view(request):
+    stored_messages = messages.get_messages(request)
     if request.user.is_authenticated:
         blogs = Blog.objects.filter(author=request.user)
-        return render(request, "community_web_application/dashboard/your_blogs.html", {"blogs":blogs})
+        return render(request, "community_web_application/dashboard/your_blogs.html", {"blogs":blogs},{"messages":stored_messages})
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
@@ -186,8 +187,8 @@ def dashboard_user_delete_view(request):
 @require_http_methods(["POST"])
 def dashboard_blog_delete_view(request):
     if request.user.is_authenticated:
-        print(request.POST['blog_id'])
-        blog = get_object_or_404(Blog, pk=request.POST['blog_id'], author=request.user)
+        blog_id = json.loads(request.body)['blog_id']
+        blog = get_object_or_404(Blog, pk=blog_id, author=request.user)
         blog.delete()
         messages.add_message(request,messages.SUCCESS, "Blog deleted successfully")
         return HttpResponseRedirect(reverse("dashboard_your_blog"))

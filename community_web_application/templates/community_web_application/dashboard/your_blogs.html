@@ -5,6 +5,11 @@
 {% endblock %}
 {% block dashboard_display %}
     <h2>Your Blog</h2>
+    {%if messages %}
+        {% for msg in messages %}
+            <p>{{msg}}</p>
+        {% endfor %}
+    {%endif%}
     <div class="table-container">
         <table>
             <thead>
@@ -24,7 +29,8 @@
                         <td class="center">{{blog.date_created|date}}</td>
                         <td class="center">{{blog.date_modified|date}}</td>
                         <td>
-                            <select>
+                            <select onclick="handleChange(event, {{blog.id}})">
+                                <option>Select</option>
                                 <option>Edit</option>
                                 <option>Delete</option>
                             </select>
@@ -34,5 +40,28 @@
             </tbody>
         </table>
     </div>
-
+    <script>
+        const handleChange = (event, id) => {
+            const selectedValue = event.target.value;
+            if(selectedValue === "Edit"){
+                console.log("hello")
+            }else if(selectedValue === "Delete"){
+                fetch("{% url 'dashboard_delete_blog' %}",{
+                    method:"POST",
+                    mode: "cors",
+                    cache: "no-cache", 
+                    credentials: "same-origin", 
+                    headers: {
+                        "Content-Type": "application/json",
+                        'X-CSRFToken': '{{csrf_token}}'
+                    },
+                    body:JSON.stringify({'blog_id':id})
+                }).then((res)=>{
+                    if (res.status === 302) {
+                        window.location.reload()
+                    }
+                })
+            }
+        };
+    </script>
 {%endblock%}
