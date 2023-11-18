@@ -127,6 +127,32 @@ def dashboard_your_blog_view(request):
         return HttpResponseRedirect(reverse("sign_in"))
 
 @require_http_methods(["GET", "POST"])
+def dashboard_update_blog_view(request,id):
+    stored_messages = messages.get_messages(request)
+    if request.user.is_authenticated:
+        blog = get_object_or_404(Blog, pk=id,author=request.user) 
+        if request.method == "GET":
+            add_blog = AddBlogForm(instance=blog)
+            return render(request, "community_web_application/dashboard/update_blog.html",{"blog":blog,"form":add_blog, "messages":stored_messages})
+        elif request.method == "POST":
+            add_blog_form = AddBlogForm(request.POST, instance=blog)
+            if add_blog_form.is_valid():
+                blog = add_blog_form.save(commit=False)
+                blog.author = Author.objects.get(pk=request.user.id)                
+                blog.save()
+                add_blog_form.save_m2m()
+                messages.add_message(request, messages.SUCCESS, 'Blog updated successfully')
+                return HttpResponseRedirect(reverse('dashboard_your_blog'))
+            else:
+                for field, errors in add_blog_form.errors.items():
+                    for error in errors:
+                        messages.add_message(request, messages.ERROR, error)
+                return HttpResponseRedirect(reverse('dashboard_update_blog'))
+    else:
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
+
+@require_http_methods(["GET", "POST"]) 
 def dashboard_add_blog_view(request):
     stored_messages = messages.get_messages(request)
     if request.user.is_authenticated:

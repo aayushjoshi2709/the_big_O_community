@@ -44,11 +44,11 @@
         const handleChange = (event, id) => {
             const selectedValue = event.target.value;
             if(selectedValue === "Edit"){
-                console.log("hello")
+                window.location.href = `/dashboard/blog/update/${id}`
             }else if(selectedValue === "Delete"){
                 fetch("{% url 'dashboard_delete_blog' %}",{
                     method:"POST",
-                    mode: "cors",
+                    mode: "cors",   
                     cache: "no-cache", 
                     credentials: "same-origin", 
                     headers: {

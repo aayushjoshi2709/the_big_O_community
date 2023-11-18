@@ -15,6 +15,7 @@ urlpatterns = [
     path("dashboard/blog/all", views.dashboard_your_blog_view, name="dashboard_your_blog"),
     path("dashboard/blog/review", views.dashboard_review_blog_view, name="dashboard_review_blog"),
     path("dashboard/blog/add", views.dashboard_add_blog_view, name="dashboard_add_blog"),
+    path("dashboard/blog/update/<int:id>", views.dashboard_update_blog_view, name="dashboard_update_blog"),
     path("dashboard/blog/delete", views.dashboard_blog_delete_view, name="dashboard_delete_blog"),
-    path("dashboard/image-upload",views.upload_image_view, name="upload_image")
+    path("dashboard/image/upload",views.upload_image_view, name="upload_image")
 ]

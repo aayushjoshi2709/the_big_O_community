@@ -160,6 +160,6 @@ CKEDITOR_CONFIGS = {
             ['Link', 'Unlink', 'Anchor', 'Image', 'Table'],
             ['Format','Font', 'FontSize','Maximize', 'ShowBlocks','Source'],
         ],
-        'filebrowserImageUploadUrl': '../dashboard/image-upload',
+        'filebrowserImageUploadUrl': '/dashboard/image/upload'
     },
 }
