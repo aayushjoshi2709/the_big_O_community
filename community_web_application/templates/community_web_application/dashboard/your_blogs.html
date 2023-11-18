@@ -1,0 +1,38 @@
+{%extends 'community_web_application/dashboard.html'%}
+{%load static%}
+{% block dashboard_elements_css %}
+    <link rel="stylesheet" type="text/css" href="{%static 'community_web_application/css/dashboard/your_blogs.css'%}"/>
+{% endblock %}
+{% block dashboard_display %}
+    <h2>Your Blog</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                   <th>Sno</th>
+                   <th>Title</th> 
+                   <th>Date Published</th>
+                   <th>Date Modified</th>
+                   <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for blog in blogs %}
+                    <tr>
+                        <td class="center">{{ forloop.counter }} </td>
+                        <td>{{blog.title}}</td>
+                        <td class="center">{{blog.date_created|date}}</td>
+                        <td class="center">{{blog.date_modified|date}}</td>
+                        <td>
+                            <select>
+                                <option>Edit</option>
+                                <option>Delete</option>
+                            </select>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{%endblock%}

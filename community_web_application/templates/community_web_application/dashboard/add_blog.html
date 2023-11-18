@@ -11,7 +11,7 @@
         {% endfor %}
     {%endif%}
     <div class="form-div">
-        <form method="post" action="{%url 'dashboard_save_blog' %}">
+        <form method="post" action="{%url 'dashboard_add_blog' %}">
             {%csrf_token%}
             {{form.media}}
             {{form.as_p}}

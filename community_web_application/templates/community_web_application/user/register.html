@@ -27,7 +27,7 @@
                     <p>{{msg}}</p>
                 {% endfor %}
             {%endif%}
-            <form method="POST" action="{% url 'user_actions' %}">
+            <form method="POST" action="{% url 'join_us' %}">
                 {%csrf_token%}
                 {%for e in registration_form %}
                     <label>{{e.label}}</label>

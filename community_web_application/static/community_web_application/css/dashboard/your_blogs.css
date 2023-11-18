@@ -1,0 +1,59 @@
+.display {
+  flex-direction: column;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-start;
+}
+h2 {
+  font-size: 48px;
+  margin: 20px;
+  text-align: center;
+}
+table {
+  width: 100%;
+  border: 1px solid grey;
+  font-size: 24px;
+  table-layout: fixed;
+}
+table, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+select {
+  font-size: 24px;
+  width: 100%;
+  border:1px solid black;
+}
+.center {
+  text-align: center;
+}
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+    border: none;
+  }
+  thead {
+    display: none;
+  }
+  td {
+    display: block;
+    border: none;
+    text-align: center;
+  }
+  tr{
+    display: block;
+    border:1px solid black;
+    margin-bottom: 10px;
+  }
+  .table-container {
+    overflow-x: hidden;
+  }
+}
+  

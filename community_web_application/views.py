@@ -29,7 +29,6 @@ def contact_us_view(request):
     return render(request, "contact_us.html")
 
 def view_blog_view(request,slug):
-    # blog_data = Blog.objects.filter(slug=slug))
     blog_data = get_object_or_404(Blog, slug = slug)
     blog_data.content = blog_data.content
     return render(request, "community_web_application/blog.html",{"blog_data":blog_data})
@@ -45,15 +44,30 @@ def login_view(request):
         author = authenticate(request, username=username, password=password)
         if author is not None:
             login(request, author)
-            return HttpResponseRedirect(reverse('dashboard_index'))
+            return HttpResponseRedirect(reverse('dashboard_home'))
         else:
             messages.add_message(request,messages.ERROR, "Username or password not correct")
             return HttpResponseRedirect(reverse("sign_in"))
 
 def signup_page_view(request):
-    stored_messages = messages.get_messages(request)
-    registration_form = RegistrationFrom()
-    return render(request,"community_web_application/user/register.html",{"registration_form":registration_form, "messages":stored_messages})
+    if request.method == "GET":
+        stored_messages = messages.get_messages(request)
+        registration_form = RegistrationFrom()
+        return render(request,"community_web_application/user/register.html",{"registration_form":registration_form, "messages":stored_messages})
+    elif request.method == "POST":
+        registration_form = RegistrationFrom(request.POST)
+        if registration_form.is_valid():
+            registration_form.save()
+            username = registration_form.cleaned_data.get('username')
+            raw_password = registration_form.cleaned_data.get('password1')
+            author = authenticate(username=username, password=raw_password)
+            login(request,author)
+            return HttpResponseRedirect(reverse('dashboard_home'))
+        else:
+            for field, errors in registration_form.errors.items():
+                for error in errors:
+                    messages.add_message(request, messages.ERROR, error)
+            return HttpResponseRedirect(reverse('join_us'))
 
 def dashboard_home_view(request):
     if request.user.is_authenticated:
@@ -96,7 +110,8 @@ def dashboard_review_blog_view(request):
     
 def dashboard_your_blog_view(request):
     if request.user.is_authenticated:
-        return render(request, "community_web_application/dashboard/your_blog.html")
+        blogs = Blog.objects.filter(author=request.user)
+        return render(request, "community_web_application/dashboard/your_blogs.html", {"blogs":blogs})
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
@@ -107,6 +122,20 @@ def dashboard_add_blog_view(request):
         if request.method == "GET":
             add_blog = AddBlogForm()
             return render(request, "community_web_application/dashboard/add_blog.html",{"form":add_blog, "messages":stored_messages})
+        elif request.method == "POST":
+            add_blog_form = AddBlogForm(request.POST)
+            if add_blog_form.is_valid():
+                blog = add_blog_form.save(commit=False)
+                blog.author = Author.objects.get(pk=request.user.id)                
+                blog.save()
+                add_blog_form.save_m2m()
+                messages.add_message(request, messages.SUCCESS, 'Blog added successfully')
+                return HttpResponseRedirect(reverse('dashboard_add_blog'))
+            else:
+                for field, errors in add_blog_form.errors.items():
+                    for error in errors:
+                        messages.add_message(request, messages.ERROR, error)
+                return HttpResponseRedirect(reverse('dashboard_add_blog'))
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
@@ -130,43 +159,6 @@ def dashboard_change_password_view(request):
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
-
-def blog_action_view(request):
-    if request.user.is_authenticated:
-        if request.method == "POST":
-            add_blog_form = AddBlogForm(request.POST)
-            if add_blog_form.is_valid():
-                blog = add_blog_form.save(commit=False)
-                blog.author = Author.objects.get(pk=request.user.id)
-                blog.save()
-                add_blog_form.save_m2m()
-                messages.add_message(request, messages.SUCCESS, 'Blog added successfully')
-                return HttpResponseRedirect(reverse('dashboard_add_blog'))
-            else:
-                for field, errors in add_blog_form.errors.items():
-                    for error in errors:
-                        messages.add_message(request, messages.ERROR, error)
-                return HttpResponseRedirect(reverse('dashboard_add_blog'))
-        else:
-            messages.add_message(request,messages.ERROR, "Please sign in first")
-            return HttpResponseRedirect(reverse("dashboard_add_blog"))
-
-def user_actions_view(request):
-    if request.method == "POST":
-        registration_form = RegistrationFrom(request.POST)
-        if registration_form.is_valid():
-            registration_form.save()
-            username = registration_form.cleaned_data.get('username')
-            raw_password = registration_form.cleaned_data.get('password1')
-            author = authenticate(username=username, password=raw_password)
-            login(request,author)
-            return HttpResponseRedirect(reverse('dashboard_index'))
-        else:
-            for field, errors in registration_form.errors.items():
-                for error in errors:
-                    messages.add_message(request, messages.ERROR, error)
-            return HttpResponseRedirect(reverse('join_us'))
-
 
 @csrf_exempt
 def upload_image_view(request):

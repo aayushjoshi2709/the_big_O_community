@@ -8,13 +8,11 @@ urlpatterns = [
     path("user/login", views.login_view, name="sign_in"),
     path("user/register", views.signup_page_view, name="join_us"),
     path("user/logout", views.logout_view, name="logout"),
-    path("user",views.user_actions_view, name="user_actions"),
-    path("dashboard", views.dashboard_home_view, name="dashboard_index"),
+    path("dashboard", views.dashboard_home_view, name="dashboard_home"),
     path("dashboard/change-password", views.dashboard_change_password_view, name="dashboard_change_password"),
     path("dashboard/user-info", views.dashboard_user_info_view, name="dashboard_user_info"),
     path("dashboard/your-blog", views.dashboard_your_blog_view, name="dashboard_your_blog"),
     path("dashboard/review-blog", views.dashboard_review_blog_view, name="dashboard_review_blog"),
     path("dashboard/add-blog", views.dashboard_add_blog_view, name="dashboard_add_blog"),
-    path("dashboard/image-upload",views.upload_image_view, name="upload_image"),
-    path("dashboard/save-blog",views.blog_action_view, name="dashboard_save_blog"),
+    path("dashboard/image-upload",views.upload_image_view, name="upload_image")
 ]
