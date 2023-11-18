@@ -1,20 +1,21 @@
 from django.shortcuts import render,get_object_or_404
-from django.http import JsonResponse
-from django.http import HttpResponseRedirect,HttpResponseBadRequest
+from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Blog, Image,Author
 from .forms import LoginForm, RegistrationFrom, RegistrationUpdationForm, UpdatePasswordForm,AddBlogForm
 from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
 from django.contrib import messages
-from django.conf import settings
+from django.views.decorators.http import require_http_methods
 from django.core.files import File
 
-# Create your views here.
+# Create your views here.s
+@require_http_methods(["GET"])
 def index_view(request):
     blog_data = Blog.objects.all()[:4]
     return render(request, "community_web_application/index.html",{"blog_data":blog_data})
 
+@require_http_methods(["GET"])
 def all_blogs_view(request):
     author_param = request.GET.get('author',None)
     tag_param = request.GET.get('tag', None)
@@ -25,14 +26,17 @@ def all_blogs_view(request):
         blog_data = blog_data.filter(tags__tag__in=[tag_param])
     return render(request, "community_web_application/all_blogs.html",{"blog_data":blog_data})
 
+@require_http_methods(["GET"])
 def contact_us_view(request):
     return render(request, "contact_us.html")
 
+@require_http_methods(["GET"])
 def view_blog_view(request,slug):
     blog_data = get_object_or_404(Blog, slug = slug)
     blog_data.content = blog_data.content
     return render(request, "community_web_application/blog.html",{"blog_data":blog_data})
 
+@require_http_methods(["GET", "POST"])
 def login_view(request):
     stored_messages = messages.get_messages(request)
     login_form = LoginForm()
@@ -49,6 +53,7 @@ def login_view(request):
             messages.add_message(request,messages.ERROR, "Username or password not correct")
             return HttpResponseRedirect(reverse("sign_in"))
 
+@require_http_methods(["GET", "POST"])
 def signup_page_view(request):
     if request.method == "GET":
         stored_messages = messages.get_messages(request)
@@ -69,6 +74,7 @@ def signup_page_view(request):
                     messages.add_message(request, messages.ERROR, error)
             return HttpResponseRedirect(reverse('join_us'))
 
+@require_http_methods(["GET"])
 def dashboard_home_view(request):
     if request.user.is_authenticated:
         return render(request, "community_web_application/dashboard/home.html")
@@ -76,6 +82,7 @@ def dashboard_home_view(request):
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
 
+@require_http_methods(["GET", "POST"])
 def dashboard_user_info_view(request):
     stored_messages = messages.get_messages(request)
     if request.user.is_authenticated:
@@ -101,13 +108,15 @@ def dashboard_user_info_view(request):
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
 
+@require_http_methods(["GET"])
 def dashboard_review_blog_view(request):
     if request.user.is_authenticated:
         return render(request, "community_web_application/dashboard/review_blog.html")
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
-    
+
+@require_http_methods(["GET"])
 def dashboard_your_blog_view(request):
     if request.user.is_authenticated:
         blogs = Blog.objects.filter(author=request.user)
@@ -115,7 +124,8 @@ def dashboard_your_blog_view(request):
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
-    
+
+@require_http_methods(["GET", "POST"])
 def dashboard_add_blog_view(request):
     stored_messages = messages.get_messages(request)
     if request.user.is_authenticated:
@@ -139,7 +149,8 @@ def dashboard_add_blog_view(request):
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
-    
+
+@require_http_methods(["GET", "POST"]) 
 def dashboard_change_password_view(request):
     if request.user.is_authenticated:
         if request.method == "GET":
@@ -155,10 +166,35 @@ def dashboard_change_password_view(request):
                 for field, errors in update_password_form.errors.items():
                     for error in errors:
                         messages.add_message(request, messages.ERROR, error)
-        return HttpResponseRedirect(reverse('dashboard_change_password'))
+            return HttpResponseRedirect(reverse('dashboard_change_password'))
     else:
         messages.add_message(request,messages.ERROR, "Please sign in first")
         return HttpResponseRedirect(reverse("sign_in"))
+
+@require_http_methods(["POST"])
+def dashboard_user_delete_view(request):
+    if request.user.is_authenticated:
+        author = get_object_or_404(Author, pk=request.user.id)
+        author.delete()
+        logout(request)
+        messages.add_message(request,messages.SUCCESS, "User deleted successfully")
+        return HttpResponseRedirect(reverse("sign_in"))
+    else:
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
+
+@require_http_methods(["POST"])
+def dashboard_blog_delete_view(request):
+    if request.user.is_authenticated:
+        print(request.POST['blog_id'])
+        blog = get_object_or_404(Blog, pk=request.POST['blog_id'], author=request.user)
+        blog.delete()
+        messages.add_message(request,messages.SUCCESS, "Blog deleted successfully")
+        return HttpResponseRedirect(reverse("dashboard_your_blog"))
+    else:
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
+
 
 @csrf_exempt
 def upload_image_view(request):
@@ -176,8 +212,10 @@ def upload_image_view(request):
             'url': url
         })
     else:
-        return HttpResponseBadRequest()
+        messages.add_message(request,messages.ERROR, "Please sign in first")
+        return HttpResponseRedirect(reverse("sign_in"))
 
+@require_http_methods(["GET"])
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
