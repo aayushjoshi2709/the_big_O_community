@@ -3,3 +3,4 @@ db.sqlite3
 env/
 /the_big_O_community/.env
 /media
+/staticfiles
