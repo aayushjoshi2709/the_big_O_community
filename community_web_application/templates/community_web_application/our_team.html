@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %} {% block css_files %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'community_web_application/css/index.css' %}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'community_web_application/css/all_blogs.css' %}"
+/>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'community_web_application/css/team_card.css' %}"
+/>
+{% endblock %} 
+
+{%block title%}
+Meet Our Team
+{%endblock%}
+
+{%block content%}
+<div class="blog-posts-cards team-card">
+    {%include 'community_web_application/team_member_card.html'%}
+</div>
+{%endblock%}
