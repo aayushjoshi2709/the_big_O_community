@@ -4,3 +4,4 @@ env/
 /the_big_O_community/.env
 /media
 /staticfiles
+.ebextensions
