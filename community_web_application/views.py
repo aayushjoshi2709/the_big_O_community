@@ -36,6 +36,14 @@ def view_blog_view(request,slug):
     blog_data.content = blog_data.content
     return render(request, "community_web_application/blog.html",{"blog_data":blog_data})
 
+
+@require_http_methods(["GET"])
+def our_team_view(request):
+    return render(request, "community_web_application/our_team.html")
+
+
+
+
 @require_http_methods(["GET", "POST"])
 def login_view(request):
     stored_messages = messages.get_messages(request)

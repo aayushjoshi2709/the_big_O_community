@@ -5,6 +5,7 @@ urlpatterns = [
     path("blogs", views.all_blogs_view, name="all_blogs"),
     path("contact-us", views.contact_us_view,name="contact_us"),
     path("blog/<slug:slug>", views.view_blog_view,name="blog_info"),
+    path("team", views.our_team_view,name="our_team"),
     path("dashboard", views.dashboard_home_view, name="dashboard_home"),
     path("user/login", views.login_view, name="sign_in"),
     path("user/logout", views.logout_view, name="logout"),
