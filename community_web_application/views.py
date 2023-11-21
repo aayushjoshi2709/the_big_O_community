@@ -2,7 +2,7 @@ from django.shortcuts import render,get_object_or_404
 from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Blog, Image,Author
+from .models import Blog, Image,Author,TeamMembers
 from .forms import LoginForm, RegistrationFrom, RegistrationUpdationForm, UpdatePasswordForm,AddBlogForm
 from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
 from django.contrib import messages
@@ -39,7 +39,10 @@ def view_blog_view(request,slug):
 
 @require_http_methods(["GET"])
 def our_team_view(request):
-    return render(request, "community_web_application/our_team.html")
+    members = TeamMembers.objects.all()
+    return render(request, "community_web_application/our_team.html", {
+        "members":members
+    })
 
 
 

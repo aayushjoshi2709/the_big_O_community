@@ -52,20 +52,19 @@ class Blog(models.Model):
         super(Blog, self).save(*args, **kwargs)
 
 
+# social media links for the team
 class Social(models.Model):
     platform = models.CharField(max_length=20)
-    url = models.CharField(max_length=50)
-
+    url = models.URLField(max_length=50)
     def __str__(self):
-        return str(self.platform)
+        return str(self.url)
 
-
-class Team(models.Model):
-    profile = models.CharField(max_length=300,  null=True)
+# social media links for the team
+class TeamMembers(models.Model):
     name = models.CharField(max_length=50)
-    bio = models.CharField(max_length=500)
+    profile_picture = models.ImageField(upload_to="team_images/")
+    bio = models.TextField(max_length=500)
     urls = models.ManyToManyField(Social)
-
     def __str__(self):
         return str(self.name)
 

@@ -1,35 +1,72 @@
-
-.team-card{
-    margin-top: 25px;
-}
-
-
-.cover{
-    width: 200px;
-    height: 200px;
-}
-
-.profile{
-
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 30px;
-    position: relative;
-    bottom: 80px;
-    /* left: 250px; */
-    
-
-}
-
-.name{
-    font-size: 40px;
+h2{
+    color: white;
+    font-size: 58px;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 4rem;
+}
+.team-container{
+    min-height: 60vh;
+    width: 80%;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.team-card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: fit-content;
+    margin: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-radius: 20px;
+}
+.data{
+    display: flex;
+    flex-direction: row;
+    flex-direction: column;
+    flex: 3;
 }
 
-.social{
-    margin: 10px auto;
+.team-card img{
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    flex: 1;
+}
+.data{
+    min-width: 400px;
+    font-size: 22px;
+}
+.data h3{
+    margin-bottom: 10px;
+    font-size: 48px;
+    text-align: center;
+}
+.data p{
+    margin: 10px 0px;
+    text-align: justify;
+}
+.socials{
+    text-align: center;
 }
 
+@media (max-width:768px) {
+    .data{
+        min-width: 300px;
+    }
+}
+@media (max-width:450px) {
+    .team-container{
+        width: 100%;
+    }
+    .team-card{
+        padding: 5px;
+    }
+    .data{
+        min-width: 220px;
+    }
+}
