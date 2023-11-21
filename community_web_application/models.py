@@ -51,3 +51,22 @@ class Blog(models.Model):
         self.slug = slugify(self.title)
         super(Blog, self).save(*args, **kwargs)
 
+
+class Social(models.Model):
+    platform = models.CharField(max_length=20)
+    url = models.CharField(max_length=50)
+
+    def __str__(self):
+        return str(self.platform)
+
+
+class Team(models.Model):
+    profile = models.CharField(max_length=300,  null=True)
+    name = models.CharField(max_length=50)
+    bio = models.CharField(max_length=500)
+    urls = models.ManyToManyField(Social)
+
+    def __str__(self):
+        return str(self.name)
+
+
