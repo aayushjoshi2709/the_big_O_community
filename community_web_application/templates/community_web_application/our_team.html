@@ -1,28 +1,35 @@
-{% extends 'base.html' %} {% load static %} {% block css_files %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'community_web_application/css/index.css' %}"
-/>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'community_web_application/css/all_blogs.css' %}"
-/>
-
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'community_web_application/css/team_card.css' %}"
-/>
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css_files %}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'community_web_application/css/team_card.css' %}"
+  />
 {% endblock %} 
 
 {%block title%}
-Meet Our Team
+  Meet Our Team
 {%endblock%}
-
+{%block inside_header%}
+  <h2>Meet our Team</h2>
+{%endblock%}
 {%block content%}
-<div class="blog-posts-cards team-card">
-    {%include 'community_web_application/team_member_card.html'%}
-</div>
+  <div class="team-container">
+    {%for member in members%}
+      <div class="team-card">
+        <img class="profile" src="/media/{{member.profile_picture}}" alt="profile" />
+        <div class="data">
+          <h3>{{member.name}}</h3>
+          <p>{{member.bio}}</p>
+          <div class="socials">
+              Socials:
+              {% for link in member.urls.all %}
+                <a href="{{link.url}}">{{link.platform}}</a>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+    {%endfor%}
+  </div>
 {%endblock%}
