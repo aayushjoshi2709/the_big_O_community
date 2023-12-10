@@ -4,7 +4,7 @@
   border: none;
 }
 .doc-info{
-  background-color: #3586ff;
+  background-color: #40c45c;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
   flex-direction: column;
   width: 100%;
   height: 120px;
-  background-color: #3586ff;
+  background-color: #40c45c;
   overflow: hidden;
 }
 .wave-section .wave {
@@ -30,7 +30,7 @@
 .footer {
   margin-top: 3rem;
   height: 300px;
-  background-color: #3586ff;
+  background-color: #40c45c;
 }
 .footer .wave-section .wave {
   top: 0;
@@ -86,7 +86,7 @@
   bottom: 10px;
 }
 .header-container {
-  background-color: #3586ff;
+  background-color: #40c45c;
 }
 .header {
   display: flex;

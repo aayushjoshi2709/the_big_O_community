@@ -38,6 +38,11 @@ def view_blog_view(request,slug):
 
 
 @require_http_methods(["GET"])
+def view_programs_view(request):
+    return render(request, "community_web_application/programs.html")
+
+
+@require_http_methods(["GET"])
 def our_team_view(request):
     members = TeamMembers.objects.all()
     return render(request, "community_web_application/our_team.html", {

@@ -28,7 +28,7 @@
     padding: 10px 16px;
     font-size: 18px;
     border-radius: 25px;
-    background-color: blue;
+    background-color: #00834c;
     font-weight: bold;
 }
 
@@ -65,7 +65,7 @@
     font-size: 42px;
 }
 .community-description h2 span{
-    color: #3586ff;
+    color: #40c45c;
 }
 .community-description p{
     font-family: Arial, Helvetica, sans-serif;

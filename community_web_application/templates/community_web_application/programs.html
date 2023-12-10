@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% load static %} {% block css_files %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'community_web_application/css/index.css' %}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'community_web_application/css/programs.css' %}"
+/>
+{% endblock %} 
+
+{%block title%} All Programs {% endblock%} 
+
+
+{%block content%}
+  <div id="fyp" class="p-base">
+   
+    <h1>Free You Phone</h1>
+    <h2>Who is controlling your phone?</h2>
+
+    <div class="content">
+      Is it you or the company that manufactured the phone?
+
+    </div>
+  </div>
+
+  <div id="lyl" class="p-base">
+   
+    <h1>Liberate your Laptop</h1>
+    <h2>Who is controlling your phone?</h2>
+
+    <div class="content">
+      Is it you or the company that manufactured the phone?
+
+    </div>
+  </div>
+
+
+  <div id="cwc" class="p-base">
+   
+    <h1>Connecting with Computers</h1>
+    <h2>Who is controlling your phone?</h2>
+
+    <div class="content">
+      Is it you or the company that manufactured the phone?
+
+    </div>
+  </div>
+
+{%endblock%}
