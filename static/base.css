@@ -43,7 +43,26 @@
   animation-delay: 0s;
   bottom: 0;
 }
-
+.footer-data{
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  margin-top: 24px;
+  font-weight: bold;
+  gap: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-data a, .footer-data:active,.footer-data:visited{
+  color: white;
+}
+.footer-data img{
+  height: 60px;
+  width: 300px;
+}
 @keyframes animate {
   0% {
     background-position-x: 0;
