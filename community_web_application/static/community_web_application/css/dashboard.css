@@ -70,6 +70,9 @@ body{
     margin: 0;
     padding: 0;
 }
+.footer-data{
+    display: none;
+}
 
 .display{
     flex-direction: column;
