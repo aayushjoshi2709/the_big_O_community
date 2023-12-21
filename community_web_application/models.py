@@ -37,7 +37,7 @@ class Image(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=300)
     description = models.CharField(max_length=300, null=True)
-    content = RichTextField(max_length=10000)
+    content = RichTextField(max_length=50000)
     estimated_time_to_read = models.IntegerField()
     tags = models.ManyToManyField(Tag)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
