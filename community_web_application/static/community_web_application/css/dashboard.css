@@ -39,7 +39,7 @@ body{
     justify-content: space-between;
 }
 .sidebar-links,.sidebar-links:active, .sidebar-links:focus, .sidebar-links:visited{
-    color: white;
+    color: var(--color-secondary);
     text-decoration: none;
 }
 @media (max-width:1340px) {
@@ -79,4 +79,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.sidebar {
+    background-color: var(--header-bg-color);
+}
+.message{
+    color: var(--color-secondary);
 }

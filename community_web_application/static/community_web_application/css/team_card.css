@@ -53,7 +53,13 @@ h2{
 .socials{
     text-align: center;
 }
-
+.socials a,.socials a:active,.socials a:hover,.socials a:visited{
+    color: var(--a-color);
+    text-decoration: none;
+}
+.socials a:hover{
+    text-decoration: underline;
+}
 @media (max-width:768px) {
     .data{
         min-width: 300px;

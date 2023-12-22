@@ -96,12 +96,12 @@
 .blog-card{
     padding: 20px;
     margin: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 350px;
     border-radius: 10px;
     justify-content: space-around;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 
 .blog-card .blog-card-footer{
     margin-top:20px;
@@ -161,7 +161,6 @@
 
 .programs-grid-card{
     display: flex;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
     border-radius: 10px;
 }
@@ -236,7 +235,6 @@
     border-radius: 10px;
     font-size: 24px;
     width: 300px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     justify-content: space-around;
 }
@@ -249,4 +247,9 @@
     color: red;
     font-size: 48px;
     font-weight: bold;
+}
+
+
+.blog-card,.stats-cards .card,.programs-grid-card {
+    box-shadow: var(--card-box-shadow);
 }
