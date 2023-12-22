@@ -168,3 +168,6 @@ CKEDITOR_CONFIGS = {
         'filebrowserImageUploadUrl': '/dashboard/image/upload'
     },
 }
+
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
