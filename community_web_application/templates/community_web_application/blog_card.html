@@ -4,7 +4,7 @@
         <p>{{blog.estimated_time_to_read|truncatechars:100}} Minute Read</p>
         <p>{{blog.description}}</p>
     </div>
-    <a href="{%url 'blog_info' blog.slug%}">
+    <a class="read-more" href="{%url 'blog_info' blog.slug%}">
         Read More...
     </a>
     <div >

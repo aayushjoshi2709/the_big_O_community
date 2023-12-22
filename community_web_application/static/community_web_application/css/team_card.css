@@ -54,7 +54,7 @@ h2{
     text-align: center;
 }
 .socials a,.socials a:active,.socials a:hover,.socials a:visited{
-    color: var(--a-color);
+    color: var(--card-a-color);
     text-decoration: none;
 }
 .socials a:hover{

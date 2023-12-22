@@ -6,7 +6,7 @@
   --input-color:dark;
   --select-bg-color:#fff;
   --select-color:black;
-  --a-color:blue;
+  --card-a-color:blue;
   --header-bg-color:#3586ff;
   --card-box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -18,7 +18,7 @@
   --input-color:white;
   --select-bg-color:#333;
   --select-color:white;
-  --a-color:red;
+  --card-a-color:red;
   --header-bg-color:#0c459a;
   --card-box-shadow:#898888 0px 2px 10px;
 }

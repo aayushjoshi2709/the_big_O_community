@@ -9,18 +9,22 @@ header_links_container.addEventListener('click',()=>{
   if(window.screen.width <= 1150)
     toggle_header_menu()
 })
-
+let theme = "Auto";
 const swith_theme = (e)=>{
-  element = document.getElementById("themechanger")
-  if(element.innerHTML ==="Auto"){
+  let element = document.getElementById("themechanger")
+  if(theme ==="Auto"){
+    console.log("here")
     set_theme("theme-light")
-    element.innerHTML = "Light"
-  }else if(element.innerHTML === "Light"){
+    element.innerHTML = `<i class="fa-solid fa-sun"></i>`
+    theme = "Light"
+  }else if(theme === "Light"){
     set_theme("theme-dark")
-    element.innerHTML = "Dark"
+    element.innerHTML = `<i class="fa-solid fa-moon"></i>`
+    theme= "Dark";
   }else{
     detect_and_set_theme()
-    element.innerHTML = "Auto"
+    element.innerHTML = `<i class="fa-solid fa-moon"></i> &nbsp;Auto`
+    theme="Auto"
   }
 }
 

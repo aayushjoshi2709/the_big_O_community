@@ -253,3 +253,7 @@
 .blog-card,.stats-cards .card,.programs-grid-card {
     box-shadow: var(--card-box-shadow);
 }
+
+.read-more{
+    color: var(--card-a-color);
+}
