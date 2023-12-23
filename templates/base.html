@@ -26,7 +26,13 @@
             {%else%}
               <li><a href="{%url 'join_us'%}">Join Us</a></li>
             {% endif %}
-            <li><a id="themechanger" onclick="swith_theme()"><i class="fa-solid fa-moon"></i> &nbsp;Auto</a></li>
+            <li>
+              <a id="themechanger" onclick="switch_theme()">
+                <i class="fa-solid fa-moon">
+                  <p>Auto</p>
+                </i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

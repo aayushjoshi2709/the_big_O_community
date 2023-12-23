@@ -9,8 +9,13 @@ header_links_container.addEventListener('click',()=>{
   if(window.screen.width <= 1150)
     toggle_header_menu()
 })
+
+function set_theme(theme_name) {
+  document.documentElement.className = theme_name;
+}
+
 let theme = "Auto";
-const swith_theme = (e)=>{
+const switch_theme = (e)=>{
   let element = document.getElementById("themechanger")
   if(theme ==="Auto"){
     console.log("here")
@@ -23,13 +28,11 @@ const swith_theme = (e)=>{
     theme= "Dark";
   }else{
     detect_and_set_theme()
-    element.innerHTML = `<i class="fa-solid fa-moon"></i> &nbsp;Auto`
+    element.innerHTML = `<i class="fa-solid fa-moon">
+      <span>Auto</span>
+    </i>`
     theme="Auto"
   }
-}
-
-function set_theme(theme_name) {
-  document.documentElement.className = theme_name;
 }
 
 function detect_and_set_theme(){
@@ -40,5 +43,8 @@ function detect_and_set_theme(){
     set_theme("theme-light")
   }
 }
-
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+  if(theme === "Auto")
+	detect_and_set_theme()
+})
 detect_and_set_theme()

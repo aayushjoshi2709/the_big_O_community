@@ -230,3 +230,9 @@ select{
   background-color: var(--color-primary);
   color:var(--color-secondary);
 }
+
+i p{
+  font-size: 10px;
+  display: inline-block;
+  text-align: center;
+}
