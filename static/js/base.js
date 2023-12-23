@@ -29,8 +29,8 @@ const switch_theme = (e)=>{
   }else{
     detect_and_set_theme()
     element.innerHTML = `<i class="fa-solid fa-moon">
-      <span>Auto</span>
-    </i>`
+    <p>Auto</p>
+  </i>`
     theme="Auto"
   }
 }
