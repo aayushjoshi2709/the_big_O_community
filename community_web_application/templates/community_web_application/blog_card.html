@@ -8,7 +8,7 @@
         Read More...
     </a>
     <div >
-        {%for tag in blog.tags.all%}
+        {%for tag in blog.tags.all|slice:"0:2" %}
         <span class="blog-card-footer">
             <a href="{% url 'all_blogs'%}?tag={{tag}}">{{tag}}</a>
         </span>
