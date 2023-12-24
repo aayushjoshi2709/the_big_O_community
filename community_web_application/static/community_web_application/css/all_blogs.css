@@ -26,3 +26,10 @@ h2{
     }
 }
 
+.blog-card p:nth-of-type(2){
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
+
