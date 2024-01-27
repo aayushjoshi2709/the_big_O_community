@@ -1,0 +1,49 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css_files %}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'community_web_application/css/stats_card.css' %}"
+  />
+{% endblock %} 
+
+{%block title%}
+  Stats
+{%endblock%}
+{%block inside_header%}
+  <h2>Stats</h2>
+{%endblock%}
+{%block content%}
+  <div class="stats-container">
+    {%for stats in stats_content%}
+      <div class="stats-card">
+        <img class="profile" src="/media/{{stats.machine_image}}" alt="computer image" />
+        <div>
+          <table>
+            <tr>
+                <td>Owner Name</td>
+                <td>{{stats.owner_name}}</td>
+            </tr>
+            <tr>
+                <td>Machine Type</td>
+                <td>{{stats.machine_type}}</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>{{stats.description}}</td>
+            </tr>
+            <tr>
+                <td>Original Configuration</td>
+                <td>{{stats.original_configuration}}</td>
+            </tr>
+            <tr>
+                <td>New Configuration</td>
+                <td>{{stats.new_configuration}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    {%endfor%}
+  </div>
+{%endblock%}

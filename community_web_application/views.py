@@ -2,7 +2,7 @@ from django.shortcuts import render,get_object_or_404
 from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Blog, Image,Author,TeamMembers
+from .models import Blog, Image,Author,TeamMembers,Stats
 from .forms import LoginForm, RegistrationFrom, RegistrationUpdationForm, UpdatePasswordForm,AddBlogForm
 from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
 from django.contrib import messages
@@ -45,7 +45,14 @@ def our_team_view(request):
     })
 
 
-
+@require_http_methods(["GET"])
+def stats(request,page_no):
+    lower = (page_no - 1)*20
+    upper = (page_no)*20
+    stats_content = Stats.objects.all()[lower:upper]
+    return render(request, "community_web_application/stats.html",{
+        "stats_content":stats_content
+    })
 
 @require_http_methods(["GET", "POST"])
 def login_view(request):

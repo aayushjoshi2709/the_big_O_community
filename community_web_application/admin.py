@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tag, Blog, Author, Image, Social, TeamMembers
+from .models import Tag, Blog, Author, Image, Social, TeamMembers, Stats
 # Register your models here.
 
 class BlogAdmin(admin.ModelAdmin):
@@ -13,3 +13,4 @@ admin.site.register(Author)
 admin.site.register(Image)
 admin.site.register(Social)
 admin.site.register(TeamMembers)
+admin.site.register(Stats)

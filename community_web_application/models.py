@@ -68,4 +68,19 @@ class TeamMembers(models.Model):
     def __str__(self):
         return str(self.name)
 
+class Stats(models.Model):
+    class MachineTypes(models.TextChoices):
+        PHONE = "Phone",
+        LAPTOP = "Laptop", 
+        DESKTOP = "Desktop", 
+        SERVER = "Server", 
+        OTHER = "Other"
+    machine_image = models.ImageField(upload_to="stats_images/")
+    owner_name = models.CharField(max_length=50)
+    machine_type = models.TextField(choices=MachineTypes.choices, default=MachineTypes.DESKTOP)
+    description = models.TextField(max_length=500)
+    original_configuration = models.TextField(max_length=500)
+    new_configuration = models.TextField(max_length=500)
+    def __str__(self):
+        return str(self.owner_name)
 
