@@ -1,20 +1,16 @@
 {% extends 'base.html' %} {% load static %} {% block css_files %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'community_web_application/css/index.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'community_web_application/css/index.css' %}" />
 {% endblock %} {%block title%} Main Page {% endblock%}
 {%block inside_header%}
-  <main class="community-information">
-    <h2>Welcome To The Community</h2>
-    <p>We use and share Free software.</p>
-    <div class="button-links">
-      <a href="{%url 'index'%}#programs">Programs</a>
-      <a href="{%url 'all_blogs'%}">Blogs</a>
-      <a href="{%url 'our_team'%}">Meet Our Teams</a>
-    </div>
-  </main>
+<main class="community-information">
+  <h2>Welcome To The Community</h2>
+  <p>We use and share Free software.</p>
+  <div class="button-links">
+    <a href="{%url 'index'%}#programs">Programs</a>
+    <a href="{%url 'all_blogs'%}">Blogs</a>
+    <a href="{%url 'our_team'%}">Meet Our Teams</a>
+  </div>
+</main>
 {%endblock%}
 {%block content%}
 <blog class="community-description">
@@ -27,54 +23,60 @@
     </p>
   </div>
   <div>
-    <img src="{% static 'community_web_application/images/logo.avif' %}" width="300" height="300"/>
+    <img src="{% static 'community_web_application/images/logo.avif' %}" width="300" height="300" />
   </div>
 </blog>
 <section class="blog-posts">
-    <h2>Blog Posts</h2>
-    <div class="blog-posts-cards">
-        {% for blog in blog_data %}
-          {% include 'community_web_application/blog_card.html' %}
-        {% endfor %}
-    </div>
+  <h2>Blog Posts</h2>
+  <div class="blog-posts-cards">
+    {% for blog in blog_data %}
+    {% include 'community_web_application/blog_card.html' %}
+    {% endfor %}
+  </div>
 </section>
 <section id="programs" class="programs-posts">
-    <h2>Programs</h2>
-    <p>Here are some of the programs running under our Community.</p>
-    <div class="programs-grid">
-        <div class="programs-grid-card">
-            <img src="{% static 'community_web_application/images/free.avif' %}"/>
-            <div class="program-grid-card-content">
-                <h3>Free your Phone</h3>
-                <p>Do you really own your phone? Learn how you can be safe and secure by using Free and Open Source Software on your phone.</p>
-            </div>
-        </div>
-        <div class="programs-grid-card">
-            <img src="{% static 'community_web_application/images/cats.avif' %}"/>
-            <div class="program-grid-card-content">
-                <h3>Connecting with Computers</h3>
-                <p>Sharing the knowledge of using Computers to people who needs the most.</p>
-            </div>
-        </div>
-        <div class="programs-grid-card gnu-love">
-            <img src="{% static 'community_web_application/images/gnu-love.avif' %}"/>
-            <div class="program-grid-card-content">
-                <h3>Liberate your Laptop</h3>
-                <p>Learn how to install GNU/Linux on your Laptop/PC and give Freedom to your devices.</p>
-            </div>
-        </div>
+  <h2>Programs</h2>
+  <p>Here are some of the programs running under our Community.</p>
+  <div class="programs-grid">
+    <div class="programs-grid-card">
+      <img src="{% static 'community_web_application/images/free.avif' %}" />
+      <div class="program-grid-card-content">
+        <h3>Free your Phone</h3>
+        <p>Do you really own your phone? Learn how you can be safe and secure by using Free and Open Source Software on
+          your phone.</p>
+      </div>
     </div>
+    <div class="programs-grid-card">
+      <img src="{% static 'community_web_application/images/cats.avif' %}" />
+      <div class="program-grid-card-content">
+        <h3>Connecting with Computers</h3>
+        <p>Sharing the knowledge of using Computers to people who needs the most.</p>
+      </div>
+    </div>
+    <div class="programs-grid-card gnu-love">
+      <img src="{% static 'community_web_application/images/gnu-love.avif' %}" />
+      <div class="program-grid-card-content">
+        <h3>Liberate your Laptop</h3>
+        <p>Learn how to install GNU/Linux on your Laptop/PC and give Freedom to your devices.</p>
+      </div>
+    </div>
+  </div>
 </section>
 <section class="programs-posts">
-    <h2>Stats</h2>
-    <p>Number of devices altered under our Programs.</p>
-    <div class="stats-cards">
-        <div class="card">
-            <p># of phones freed</p> <p>5</p>
-        </div>
-        <div class="card">
-            <p># of Laptops liberated</p> <p>1</p>
-        </div>
+  <h2>Stats</h2>
+  <p>Number of devices altered under our Programs.</p>
+  <div class="stats-cards">
+    <div class="card">
+      <p># of phones freed</p>
+      <p>5</p>
     </div>
+    <a style="display:block" href="{%url 'stats'%}/1">
+      <div class="card">
+        <p># of Laptops liberated</p>
+        <p>1</p>
+      </div>
+    </a>
+
+  </div>
 </section>
 {%endblock%}
