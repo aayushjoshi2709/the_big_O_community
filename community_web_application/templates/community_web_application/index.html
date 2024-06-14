@@ -4,6 +4,12 @@
   type="text/css"
   href="{% static 'community_web_application/css/index.css' %}"
 />
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'community_web_application/css/services.css' %}"
+/>
 {% endblock %} {%block title%} Main Page {% endblock%}
 {%block inside_header%}
   <main class="community-information">
@@ -65,6 +71,46 @@
         </div>
     </div>
 </section>
+
+
+<section id="sevices" class="services">
+    <h2>Services</h2>
+    <p>Here are some of the services offered by our Community.</p>
+    <div class="flexbox">
+        <div class="flexcard flexcardGreen">
+            <div class="flexcardNumber flexcardNumberGreen">01</div>
+            <div class="flex flexcardTitle">Email</div>
+            <div class="flex flexcardText">We self-host our email server, providing full control and zero dependency on other proprietary providers.</div>
+            <div class="flex flexcardImg"><img class="flexcardimgItem"
+                    src="https://www.kindpng.com/picc/m/268-2686291_computer-icons-email-clip-art-duplicate-emails-hd.png" alt=""></div>
+        </div>
+        <div class="flexcard flexcardBlue">
+            <div class="flexcardNumber flexcardNumberBlue">02</div>
+            <div class="flex flexcardTitle">NextCloud</div>
+            <div class="flex flexcardText">Taking full control of our data, privacy, and security by hosting our own email server and Nextcloud instance.</div>
+            <div class="flex flexcardImg"><img class="flexcardimgItem"
+                    src="https://goopensource.fr/wp-content/uploads/2020/11/Nextcloud-Logo-800x445.png" alt=""></div>
+        </div>
+        <div class="flexcard flexcardOrange">
+            <div class="flexcardNumber flexcardNumberOrange">03</div>
+            <div class="flex flexcardTitle">XMPP</div>
+            <div class="flex flexcardText">Connect with your loved ones securely without your data being sold.</div>
+            <div class="flex flexcardImg"><img class="flexcardimgItem"
+                    src="https://www.kindpng.com/picc/m/720-7209082_transparent-jackie-chan-wtf-png-jabber-xmpp-png.png" alt=""></div>
+        </div>
+        <!-- <div class="flexcard flexcardPink">
+            <div class="flexcardNumber flexcardNumberPink">04</div>
+            <div class="flex flexcardTitle">Title</div>
+            <div class="flex flexcardText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae,
+                temporibus consectetur? Iure id nam fuga asperiores repellat accusantium exercitationem nemo?</div>
+            <div class="flex flexcardImg"><img class="flexcardimgItem"
+                    src="https://cdn.pixabay.com/photo/2017/01/10/23/01/seo-1970475_960_720.png" alt=""></div>
+        </div> -->
+
+</section>
+
+
+
 <section class="programs-posts">
     <h2>Stats</h2>
     <p>Number of devices altered under our Programs.</p>
