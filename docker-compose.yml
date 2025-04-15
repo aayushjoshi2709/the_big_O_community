@@ -1,0 +1,36 @@
+version: '3.8'  
+services:
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=TheBigOcommunityPass
+      - POSTGRES_DB=the_big_O_community_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  server:
+    build:
+      context: ./
+      dockerfile: .dockerfile
+    environment:
+      - APP_HOST=127.0.0.1
+      - SECRET_KEY=sdfkljadfjlasf
+      - IS_DEVELOPMENT=true
+      - DATABASE_NAME=the_big_O_community_db
+      - USER_NAME=postgres
+      - PASSWORD=TheBigOcommunityPass
+      - HOST_NAME=database
+      - PORT=5432
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    command: >
+      sh -c "
+        python manage.py makemigrations;
+        python manage.py migrate;
+        python manage.py runserver 0.0.0.0:8000"
+volumes:
+  pgdata: 
